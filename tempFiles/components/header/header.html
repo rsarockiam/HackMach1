@@ -1,0 +1,61 @@
+<div class="w_vz-header-container" ng-class="{ 'w_vz-header-mobile--scrolled' : isScrolled }">
+    <div class="w_vz-header">
+        <button class="w_vz-header-togglecart-button" ng-click="toggleCart()"></button>
+        <a href="#/">
+            <img class="w_vz-logo" src="images/Verizon_FiOS_Logo_2015.png" />
+        </a>
+        <div class="w_vz-price-container" ng-show="isCartHeaderVisible">
+            <p class="w_vz-cart-change" ng-if="newCartTotal"><span class="state" ng-if="itemAdded">Added!</span><span class="total">{{newCartTotal}}</span></p>
+            <p class="w_vz-total" ng-if="!newCartTotal" ng-click="toggleCart()">{{cartTotal}}</p>
+        </div>
+        <div class="w_vz-minicart" ng-if="showCart">
+            <div class="content" ng-animate-children="{{true}}">
+                <div class="tiny-6 columns"><strong>Monthly Charges*</strong></div>
+                <div class="tiny-6 columns text-right">
+                    <button class="lineup-overview-close-click-area" ng-click="toggleCart()"></button>
+                    <span class="vzlhicon vzlhicon-close-x lineup-overview-close-icon" ng-click="toggleCart()"></span>
+                </div>
+                <div class="w_vz-service" ng-if="hasInternet()">
+                    <div class="lineupdetails  row">
+                        <div class="tiny-12 columns"><strong>Internet</strong></div>
+                    </div>
+                    <div class="lineupdetails  row" ng-repeat="InternetPlan in services.Internet.Plans track by InternetPlan.Price">
+                        <div class="tiny-8 columns">{{InternetPlan.ServiceName}}</div>
+                        <div class="tiny-4 columns text-right"><span>${{InternetPlan.Price}}</span></div>
+                    </div>
+                    <div ng-repeat="InternetAddOn in services.Internet.AddOns">
+                        <div class="lineupdetails  row" ng-repeat="InternetAddOnOption in InternetAddOn.Options track by InternetAddOnOption.Price">
+                            <div class="tiny-8 columns">{{InternetAddOnOption.AddonDesc}}</div>
+                            <div class="tiny-4 columns text-right"><span>{{InternetAddOnOption.Price == 0 ? 'Included' : '$'+InternetAddOnOption.Price}}</span></div>
+                        </div>
+                    </div>
+                    <div ng-repeat="VoiceAddOn in services.Phone.AddOns">
+                        <div class="lineupdetails  row" ng-repeat="VoiceAddOnOption in VoiceAddOn.Options">
+                            <div class="tiny-8 columns">{{VoiceAddOnOption.AddonName}}</div>
+                            <div class="tiny-4 columns text-right"><span>{{VoiceAddOnOption.Price == 0 ? 'Included' : '$'+VoiceAddOnOption.Price}}</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w_vz-service" ng-if="hasTV()">
+                    <div class="lineupdetails collapse row">
+                        <div class="tiny-12 columns"><strong>TV</strong></div>
+                    </div>
+                    <div class="lineupdetails collapse row" ng-repeat="TVPlan in services.TV.Plans track by TVPlan.Price">
+                        <div class="tiny-8 columns">{{TVPlan.ServiceName}}</div>
+                        <div class="tiny-4 columns text-right"><span>${{TVPlan.Price}}</span></div>
+                    </div>
+                    <div ng-repeat="TVAddOn in services.TV.AddOns">
+                        <div class="lineupdetails collapse row" ng-repeat="TVAddOnOption in TVAddOn.Options">
+                            <div class="tiny-8 columns">{{TVAddOnOption.AddonName}}</div>
+                            <div class="tiny-4 columns text-right"><span>{{TVAddOnOption.Price == 0 ? 'Included' : '$'+TVAddOnOption.Price}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w_vz-mincart-cta">
+                <slide-button disabled="reviewButtonDisabled" clicked="nextButtonClicked" button-text="Review Order" ng-click="gotoReview()"></slide-button>
+            </div>
+        </div>
+    </div>
+</div>

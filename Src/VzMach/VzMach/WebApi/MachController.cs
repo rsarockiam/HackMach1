@@ -4,36 +4,50 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Newtonsoft.Json;
+using System.Dynamic;
 
 namespace VzMach.WebApi
 {
     public class MachController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        #region LocationDetails
+        [Route("~/WebApi/GetLocaionDetails")]
+        [HttpGet]
+        #endregion
+        public IHttpActionResult GetLocaionDetails(string type="")
         {
-            return new string[] { "value1", "value2" };
+
+            dynamic location = null;
+            return location;
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        #region RecommendPlans
+        [Route("~/WebApi/GetRecommendPlans")]
+        [HttpGet]
+        #endregion
+        public IHttpActionResult GetRecommendPlans(string type = "")
         {
-            return "value";
+
+            dynamic RecommendPlans = null;
+            return RecommendPlans;
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+
+        #region GetBundles
+        [Route("~/WebApi/GetBundles")]
+        [HttpGet]
+        #endregion
+        public IHttpActionResult GetBundles(string type = "")
         {
+
+            dynamic GetBundles = null;
+            return GetBundles;
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
+
+
+
     }
 }

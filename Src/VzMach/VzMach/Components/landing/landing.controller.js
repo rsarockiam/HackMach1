@@ -11,9 +11,13 @@
 angular.module('vzMach')
   .controller('landingController', ['$scope', '$state', '$rootScope', '$timeout',
 	function ($scope, $state, $rootScope, $timeout) {
-	    vm.update = function ()
-	    { };
-	    vm.continue = function ()
-	    { };
+	    var vm = this;
+	    vm.update = function () {
+	        $state.go("recommended");
+	    };
+	    vm.continue = function () {
+	        $state.go("recommended");
+	    };
+	    return vm;
 	}
   ]);

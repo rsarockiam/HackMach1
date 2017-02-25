@@ -24,13 +24,14 @@
     <script src="~/app.js"></script>
     <script src="~/Components/header/header.controller.js"></script>
     <script src="~/Components/header/header.directive.js"></script>
+    <script src="~/Components/landing/landing.controller.js"></script>
 
 </head>
 
-<body ng-app="vzMach">
+<body ng-app="vzMach" class="vzrf">
 
-    <div class="container vzlh-container">
-        <div class="main" ng-class="{'padding-top-zero bg-grey-6 m_ordering-page m_checkout-page': true, 'fluid-grid': false}">
+    <div class="container vzlh-container" style="height:calc(100vh);">
+        <div class="main">
             <vz-loader></vz-loader>
             <div class="w_vz-notifications-container">
                 <vz-notification message="data"></vz-notification>
@@ -39,8 +40,6 @@
                 <vz-header message="data"></vz-header>
             </div>
             @RenderBody();
-
-            <div id="BottomSpacer"></div>
         </div>
     </div>
 

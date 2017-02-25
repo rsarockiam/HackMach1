@@ -64,10 +64,15 @@ angular
             controllerAs: "vm"
         })
         .state('recommended', {
-            url: "/recommended",
+            url: "/customize",
             templateUrl: "components/recommended/recommended.html",
             controller: "recommendedController"
         })
+           .state('plans', {
+               url: "/plans",
+               templateUrl: "components/recommended/recommended.html",
+               controller: "recommendedController"
+           })
         .state('byo', {
             url: "/byo",
             templateUrl: 'components/byob/byob.html',

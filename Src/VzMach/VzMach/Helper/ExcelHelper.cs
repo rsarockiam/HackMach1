@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 using System.IO;
 using System.Data.OleDb;
-namespace Logger_Extract
+namespace VzMach.Helper
 {
     public class ExcelHelper
     {
@@ -23,16 +23,9 @@ namespace Logger_Extract
                 {
 
                     string conn = "Provider=Microsoft.ACE.OLEDB.12.0; " +  "data source='" + filePath + "';" + "Extended Properties=\"Excel 12.0;HDR=YES;IMEX=1\" ";
-
-
                     objConn = new OleDbConnection(conn);
                     objConn.Open();
-                    //DataTable dbSchema = objConn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                    //if (dbSchema == null || dbSchema.Rows.Count < 1)
-                    //{
-                    //    throw new Exception("Error: Could not determine the name of the first worksheet.");
-                    //}
-                    //string firstSheetName = dbSchema.Rows[0]["TABLE_NAME"].ToString();
+                   
                     oleDA = new OleDbDataAdapter("select * from [Sheet1$]", objConn);
                     dt = new DataTable();
                     oleDA.Fill(dt);

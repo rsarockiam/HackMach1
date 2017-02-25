@@ -1,0 +1,307 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Lighthouse</title>
+    <meta name="description" content="">
+    <script type="text/javascript" language="javascript">
+        // (HttpContext.Current.Request.Url != null && (HttpContext.Current.Request.Url.AbsolutePath ?? "").ToUpper().Contains("MFORYOURHOME"))
+        var baseURL = window.location.protocol + "//" + window.location.hostname + "/";
+        baseURL = "http://localhost:4444/";
+    </script>
+    <!--We added-->
+    <!--
+
+
+
+
+
+
+    -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bundle/bower_components/flickity/dist/flickity.min.css" />
+    <!-- endbower -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link href="//respframework.verizon.com/vzrf/2-20-0/stylesheets/complete/vzrf.css" rel="stylesheet" />
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="bundle/styles/main.css">
+    <!-- endbuild -->
+
+</head>
+
+
+
+
+
+<body ng-app="lighthouseApp" class="vzrf">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+
+    <div class="container vzlh-container" ng-controller="LayoutCtrl">
+        <div class="main" ng-class="{'padding-top-zero bg-grey-6 m_ordering-page m_checkout-page': !isBundleFlow, 'fluid-grid': isBundleFlow}">
+            <vz-loader></vz-loader>
+            <div class="w_vz-notifications-container">
+                <vz-notification message="data"></vz-notification>
+            </div>
+            <div class="w_vz-header-container">
+                <vz-header message="data"></vz-header>
+            </div>
+            <div ui-view></div>
+            <div id="BottomSpacer"></div>
+        </div>
+        <info-modal></info-modal>
+        <channel-lineup></channel-lineup>
+        <recommendation></recommendation>
+
+    </div>
+    <div footer></div>
+    <div internal> </div>
+    <div sc> </div>
+
+    <!--</main>-->
+    <first-bill-estimate> </first-bill-estimate>
+    <div class="page-overlay" data-loader-overlay>
+        <div class="center"></div>
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+        !function (A, n, g, u, l, a, r) {
+            A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+        }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
+    </script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bundle/bower_components/angular/angular.js"></script>
+    <script src="bundle/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bundle/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bundle/bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="bundle/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bundle/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bundle/bower_components/angular-touch/angular-touch.js"></script>
+    <!--<script src="bundle/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>-->
+    <script src="../../Common/ak-cached/24h/js/libs/angular-ui-router.min.js"></script>
+    <script src="bundle/bower_components/lodash/lodash.js"></script>
+    <!--<script src="bundle/bower_components/desandro-matches-selector/matches-selector.js"></script>
+    <script src="bundle/bower_components/ev-emitter/ev-emitter.js"></script>-->
+    <script src="bundle/bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="bundle/bower_components/classie/classie.js"></script>
+    <script src="bundle/bower_components/eventie/eventie.js"></script>
+    <script src="bundle/bower_components/doc-ready/doc-ready.js"></script>
+    <script src="bundle/bower_components/eventEmitter/EventEmitter.js"></script>
+    <script src="bundle/bower_components/matches-selector/matches-selector.js"></script>
+    <script src="bundle/bower_components/fizzy-ui-utils/utils.js"></script>
+    <script src="bundle/bower_components/get-style-property/get-style-property.js"></script>
+    <script src="bundle/bower_components/get-size/get-size.js"></script>
+    <script src="bundle/bower_components/unipointer/unipointer.js"></script>
+    <script src="bundle/bower_components/tap-listener/tap-listener.js"></script>
+    <script src="bundle/bower_components/unidragger/unidragger.js"></script>
+    <script src="bundle/bower_components/flickity/dist/flickity.pkgd.js"></script>
+    <script src="bundle/bower_components/angular-flickity/dist/angular-flickity.js"></script>
+    <script src="bundle/bower_components/angular-scroll/angular-scroll.min.js"></script>
+    <script src="bundle/bower_components/angular-ui/ui-bootstrap-tpls-2.4.0.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <script src="//respframework.verizon.com/vzrf/2-20-0/js/complete/vzrf.js"></script>
+    <script src="../shared/vzrfinit.js"></script>
+    <script src="../shared/appinit.js"></script>
+
+    <script src="app.js" language="javascript"></script>
+    <script src="bundle/scripts/environment.js"></script>
+    <script src="bundle/scripts/config.js"></script>
+
+    <script src="bundle/global/services/VZPreConfig.service.js"></script>
+    <script src="bundle/global/services/VZServices.service.js"></script>
+    <script src="bundle/global/services/Cart.service.js"></script>
+    <script src="bundle/global/services/Addons.service.js"></script>
+    <script src="bundle/global/services/WindowResize.service.js"></script>
+    <script src="bundle/global/services/VZChannelLineup.service.js"></script>
+
+    <script src="bundle/global/factories/position.fac.js"></script>
+    <script src="bundle/global/factories/simple-motion.fac.js"></script>
+    <script src="bundle/global/factories/easing.fac.js"></script>
+
+    <script src="bundle/global/filters/price-term.filter.js"></script>
+    <script src="bundle/global/filters/remove-plan.filter.js"></script>
+    <script src="bundle/global/filters/group-by-type.filter.js"></script>
+    <script src="bundle/global/filters/group-by-letter.filter.js"></script>
+
+
+
+    <script src="bundle/components/layout/layout.controller.js"></script>
+
+    <script src="bundle/components/notification/notification.service.js"></script>
+    <script src="bundle/components/notification/notification.directive.js"></script>
+
+    <script src="bundle/components/header/header.controller.js"></script>
+    <script src="bundle/components/header/header.directive.js"></script>
+
+    <script src="bundle/components/buttons/slide-button.controller.js"></script>
+    <script src="bundle/components/buttons/slide-button.directive.js"></script>
+
+    <script src="bundle/components/info-modal/info-modal.controller.js"></script>
+    <script src="bundle/components/info-modal/info-modal.directive.js"></script>
+
+    <script src="bundle/components/modals/modal.service.js"></script>
+
+    <script src="bundle/components/modals/edit/edit.controller.js"></script>
+    <script src="bundle/components/modals/info/info.controller.js"></script>
+    <script src="bundle/components/modals/lineup/lineup.controller.js"></script>
+
+    <script src="bundle/components/droplist/droplist.controller.js"></script>
+    <script src="bundle/components/droplist/droplist.directive.js"></script>
+
+    <script src="bundle/components/datepicker/datepicker-template.js"></script>
+
+    <script src="bundle/components/channel-lineup/channel-lineup.controller.js"></script>
+    <script src="bundle/components/channel-lineup/channel-lineup.directive.js"></script>
+
+
+    <script src="bundle/components/channel-lineup-search/channel-lineup-search.controller.js"></script>
+    <script src="bundle/components/channel-lineup-search/channel-lineup-search.directive.js"></script>
+
+    <script src="bundle/components/channel-lineup-viewby/channel-lineup-viewby.service.js"></script>
+    <script src="bundle/components/channel-lineup-viewby/channel-lineup-viewby.controller.js"></script>
+    <script src="bundle/components/channel-lineup-viewby/channel-lineup-viewby.directive.js"></script>
+
+    <script src="bundle/components/channel-lineup-alphalinks/channel-lineup-alphalinks.controller.js"></script>
+    <script src="bundle/components/channel-lineup-alphalinks/channel-lineup-alphalinks.directive.js"></script>
+
+    <script src="bundle/components/channel-lineup-listing-group/channel-lineup-listing-group.controller.js"></script>
+    <script src="bundle/components/channel-lineup-listing-group/channel-lineup-listing-group.directive.js"></script>
+
+    <script src="bundle/components/channel-lineup-listing/channel-lineup-listing.controller.js"></script>
+    <script src="bundle/components/channel-lineup-listing/channel-lineup-listing.directive.js"></script>
+
+    <script src="bundle/components/channel-lineup-compare/channel-lineup-compare.controller.js"></script>
+    <script src="bundle/components/channel-lineup-compare/channel-lineup-compare.directive.js"></script>
+
+    <script src="bundle/components/recommendation/recomendation.controller.js"></script>
+    <script src="bundle/components/recommendation/recomendation.directive.js"></script>
+    <script src="bundle/components/recommendation/recomendation.service.js"></script>
+
+    <script src="bundle/components/loader/loader.controller.js"></script>
+    <script src="bundle/components/loader/loader.directive.js"></script>
+
+    <script src="bundle/components/selection/selection.controller.js"></script>
+    <script src="bundle/components/selection/selection.directive.js"></script>
+
+    <script src="bundle/components/tooltip/tooltip.controller.js"></script>
+    <script src="bundle/components/tooltip/tooltip.directive.js"></script>
+
+    <script src="bundle/components/product-selection/product-selection.controller.js"></script>
+    <script src="bundle/components/product-selection/product-selection.directive.js"></script>
+    <script src="bundle/components/product-selection/product-selection.service.js"></script>
+
+
+    <script src="bundle/components/change-product/change-product.controller.js"></script>
+    <script src="bundle/components/change-product/change-product.service.js"></script>
+
+    <script src="bundle/components/product-carousel/product-carousel.controller.js"></script>
+    <script src="bundle/components/product-carousel/product-carousel.directive.js"></script>
+    <script src="bundle/components/product-carousel/product-carousel.service.js"></script>
+    <script src="bundle/components/product-carousel/product-carousel-swipe.service.js"></script>
+
+    <script src="bundle/components/workflow/workflow.controller.js"></script>
+    <script src="bundle/components/workflow/workflow.service.js"></script>
+    <script src="bundle/components/workflow/workflow.factory.js"></script>
+
+    <script src="bundle/components/loopqual/loopqual.controller.js"></script>
+    <script src="bundle/components/preconfig/preconfig.controller.js"></script>
+
+    <script src="bundle/components/progress/progress.controller.js"></script>
+    <script src="bundle/components/review/review.controller.js"></script>
+    <script src="bundle/components/review/review.service.js"></script>
+
+    <script src="bundle/components/checkout/checkout.controller.js"></script>
+    <script src="bundle/components/checkout/checkout.service.js"></script>
+    <script src="bundle/components/checkout/contact-info/contact-info.controller.js"></script>
+    <script src="bundle/components/checkout/credit-check/credit-check.controller.js"></script>
+    <script src="bundle/components/checkout/installation/installation.controller.js"></script>
+
+    <script src="bundle/components/checkout/installation-temp/installation.ctrl.js"></script>
+    <script src="bundle/components/checkout/installation-temp/installation.dir.js"></script>
+    <script src="bundle/components/checkout/installation-temp/moment.min.js"></script>
+    <script src="bundle/components/checkout/tos/tos.controller.js"></script>
+    <script src="bundle/components/checkout/deposit-payment/deposit-payment.controller.js"></script>
+    <script src="bundle/components/order-confirmation/order-confirmation.controller.js"></script>
+
+
+    <script src="bundle/components/print/print.controller.js"></script>
+    <script src="bundle/components/print/print.directive.js"></script>
+
+    <!--Below code are added by Vz-->
+    <script src="../vzBootstrap.js"></script>
+    <script src="../shared/vzCommon.js"></script>
+    <script src="../shared/lighthouse.js"></script>
+    <script src="../constants/Urls.js" language="javascript"></script>
+    <script src="../shared/CheckOutJQuery.js"></script>
+
+    <script src="../services/CommonService.js" language="javascript"></script>
+    <script src="../services/CheckoutService.js" language="javascript"></script>
+    <script src="../shared/checkoutUtil.js"></script>
+    <script src="../shared/calendar/CalendarDirective.js" language="javascript"></script>
+    <script src="../shared/header/headerDirective.js" language="javascript"></script>
+    <script src="../shared/footer/footerDirective.js" language="javascript"></script>
+    <script src="../shared/FBE/FirstBillEstimateController.js" language="javascript"></script>
+    <script src="../shared/FBE/FirstBillEstimateDirective.js" language="javascript"></script>
+    <script src="../shared/cart/CartDirective.js" language="javascript"></script>
+    <script src="../shared/internal/internalDirective.js" language="javascript"></script>
+    <script src="../shared/SC/SCDirective.js" language="javascript"></script>
+    <script src="../services/ChatService.js" language="javascript"></script>
+    <!--checkout-->
+    <!--<script src="checkout/CheckOutController.js" language="javascript"></script>
+
+    <script src="checkout/contact/ContactCheckController.js" language="javascript"></script>
+    <script src="checkout/credit/CreditCheckController.js" language="javascript"></script>
+    <script src="checkout/installation/InstallationController.js" language="javascript"></script>
+    <script src="checkout/tos/TermsofServiceController.js" language="javascript"></script>
+    <script src="checkout/deposit/DepositController.js" language="javascript"></script>
+    <script src="confirmation/ConfirmationController.js" language="javascript"></script>
+    <link href="../../Common/ak-cached/24h/vzrf-extend/stylesheets/app/app.css" rel="stylesheet" />
+    <link href="../../Common/ak-cached/24h/css/LH2_0.css" rel="stylesheet" />-->
+    <!--<link href="../../Common/ak-cached/24h/vzrf-extend/stylesheets/app/animate.css" rel="stylesheet" />
+    <link href="../../Common/ak-cached/24h/vzrf-extend/stylesheets/app/customStyles.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />-->
+    <link href="bundle/components/checkout/installation-temp/installation.css" rel="stylesheet" />
+    <link href="../shared/footer/footer-bar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bundle/styles/main.css">
+    <link href="../shared/header/header-bar.css" rel="stylesheet" />
+
+
+    <script src="//wwwawssit.ebiz.verizon.com/includes/javascript/omnicode.js"></script>
+    <script type='text/javascript' src='//nexus.ensighten.com/verizon/Bootstrap.js'></script>
+    <script src="../shared/main-nav.js"></script>
+    <script type="text/javascript" src="../../Common/ak-cached/24h/js/TouchCommerce.js"></script>
+    <!--<script src="../../Common/ak-cached/24h/js/libs/utils.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/classie.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/eventie.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/doc-ready.js"></script>-->
+    <script src="../../Common/ak-cached/24h/js/libs/EventEmitter.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/matches-selector.js"></script>
+
+    <script src="../../Common/ak-cached/24h/js/libs/get-style-property.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/get-size.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/unipointer.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/tap-listener.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/unidragger.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/flickity.pkgd.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/angular-flickity.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/bootstrap.min.js"></script>
+    <script src="../../Common/ak-cached/24h/js/libs/jquery.min.js"></script>
+</body>
+</html>

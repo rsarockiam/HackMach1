@@ -23,11 +23,6 @@ angular.module('vzMach')
 	        vm.state = vzService.getStateCode(data.region);
 	        vm.zipcode = parseInt(data.postal);
 	    })
-	    vm.getRecommendPlans = function () {
-	        vzService.getRecommendPlans(vm.zipcode).then(function (data) {
-	            console.log(JSON.parse(data));
-	        })
-	    }
 	    vm.getZipInfo = function () {
 	        if (vm.zipcode.toString().length == 5)
 	        {
@@ -38,7 +33,9 @@ angular.module('vzMach')
 	        }
 	    }
 	    vm.continueWithoutStreetAddress = function () {
-
+	        vzService.setZipcode(vm.zipcode)
+	        vzService.setState(vm.state)
+	        $state.go("recommendedPlan");
 	    }
 	   
 	    return vm;

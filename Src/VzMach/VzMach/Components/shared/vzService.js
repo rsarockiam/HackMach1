@@ -55,16 +55,16 @@
                 }
             },
             setZipcode: function (zip) {
-                localStorage.setItem("zipcode", zip);
+                localStorage.zipcode = zip;
             },
             setState: function (State) {
-                localStorage.setItem("state", State);
+                localStorage.state= State;
             },
             getZipcode: function () {
-                return localStorage.getItem("zipcode");
+                return localStorage.zipcode;
             },
             getState: function () {
-                return localStorage.getItem("state");
+                return localStorage.state;
             },
             getZipDetails: function (zipcode) {
                 var deferred = $q.defer();

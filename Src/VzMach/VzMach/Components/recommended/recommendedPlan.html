@@ -1,12 +1,23 @@
 ﻿<div class="row clearfix fluid-grid">
-    <div class="widget_carousel bg-grey-6 cmb-carousel">
         <div class="row">
             <div class="columns padding-vert-zero" >
-                <h2 style="display:inline-block;margin-right:10px"> < </h2>
-                <h2 style="display:inline-block" class="center">{{vm.slides[0].text}}</h2>
-                <h2 style="display:inline-block;margin-left:10px" class="right"> > </h2>
-                <div class="carousel_pager-next show-for-medium-up" data-carousel-next=""></div>
+                <div style="text-align:center">
+                    <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrev()"> < </h4>
+                    <h4 style="display:inline-block;margin-left:50px;margin-right:50px" class="">{{vm.slides[vm.index].text}}</h4>
+                    <h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNext()"> > </h4>
+                </div>
+                
                     </div>
                   </div>
-                  </div>
+    <div class="row" style="margin-top:50px">
+        <div class="columns padding-vert-zero">
+            <div style="text-align:center">
+                <h1>{{vm.slides[vm.index].plans[vm.listIndex].planName}}</h1>
+                <h4>{{vm.slides[vm.index].plans[vm.listIndex].Description}}</h4>
+                <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrevPlan()"> < </h4>
+                <h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNextPlan()"> > </h4>
+            </div>
         </div>
+    </div>
+    </div>
+    

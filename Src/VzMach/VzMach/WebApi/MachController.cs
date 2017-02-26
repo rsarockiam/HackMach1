@@ -126,7 +126,7 @@ namespace VzMach.WebApi
         /// <returns></returns>
 
         #region GetAllBundles
-        [Route("~/WebApi/GetAllBundles")]
+        [Route("~/WebApi/GetAllBundlesByType")]
         [HttpGet]
         #endregion
         

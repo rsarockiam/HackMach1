@@ -9,11 +9,15 @@
  */
 
 angular.module('vzMach')
-  .controller('recommendedPlanController', ['$scope', '$state', '$rootScope', '$timeout',
-	function ($scope, $state, $rootScope, $timeout) {
+  .controller('recommendedPlanController', ['$scope', '$state', '$rootScope', '$timeout','vzService',
+	function ($scope, $state, $rootScope, $timeout, vzService) {
 	    var vm = this;
 	    vm.index = 0;
 	    vm.listIndex = 0;
+	    var zipcode = vzService.getZipcode();
+	    vzService.getRecommendPlans().then(function (data) {
+	        console.log(data);
+	    })
 	    vm.slides = [
           {
               text: 'Triple Play',

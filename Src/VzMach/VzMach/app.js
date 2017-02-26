@@ -28,7 +28,9 @@ angular
     //'Services',
     //'Constants',
     //'Shared',
-    'ui.bootstrap'
+    'ui.bootstrap',    
+    'ngStorage'
+    
   ])
   .provider('globalInitializers', function globalInitializersProvider() {
       this.$get = function () {

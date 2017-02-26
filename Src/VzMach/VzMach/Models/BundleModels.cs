@@ -8,4 +8,7 @@ namespace VzMach.Models
     public class BundleModels
     {
     }
+    public class RecomendedModels
+    {
+    }
 }

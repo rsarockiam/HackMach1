@@ -14,6 +14,7 @@
             <div style="text-align:center">
                 <h1>{{vm.slides[vm.index].plans[vm.listIndex].planName}}</h1>
                 <h4>{{vm.slides[vm.index].plans[vm.listIndex].Description}}</h4>
+                <h4>${{vm.slides[vm.index].plans[vm.listIndex].Price}}</h4>
                 <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrevPlan()"> < </h4>
                 <h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNextPlan()"> > </h4>
             </div>

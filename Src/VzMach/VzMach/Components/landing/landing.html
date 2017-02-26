@@ -1,32 +1,29 @@
-﻿<div class="row clearfix fluid-grid container" >
+﻿<div class="row clearfix fluid-grid container">
     <ul class="columns w_vz-lineup tiny-block-grid-1 large-block-grid-3">
         <li class="w_vz-lineup-item w_vz-lineup-item--tall w_vz-loopqual w_vz-lineup-sub-header" style="height:calc(50vh - 30px);margin-top:10px">
-            <h6 class="margin-bottom-medium">Enter address</h6>
             <div class="row">
-                    <div class="medium-6 columns">
-                        <input id="lrstate" placeholder="City" title="City" zipcode="" ng-model="vm.city">
-                    </div>
-                    <div class="medium-3 columns">
-                        <input id="lrstate" placeholder="State" title="Zip code" zipcode="" ng-model="vm.state">
-                    </div>
-                    <div class="medium-3 columns">
-                        <input id="lrzipcode" placeholder="Zip code" title="Zip code" zipcode="" ng-model="vm.zipcode" ng-change="vm.getZipInfo()">
-                    </div>
-                   
-
+                <span class="margin-bottom-medium cta-text block text-black">Please update ur below address to help us to find more approirate plan for you</span>
+            </div>
+            <div class="row">
                 <div class="medium-12 columns">
                     <input address="" id="lraddress" placeholder="Street address" ng-model="vm.streetAddress">
                 </div>
-                <div class="medium-12 columns">
-                    <button class="button cta-text block text-black" id="lrcheckforfios">Contine with Street Address</button>
+                <div class="medium-6 columns">
+                    <input id="lrstate" placeholder="City" title="City" zipcode="" ng-model="vm.city">
                 </div>
-                    <div class="medium-12 columns">
-                        <button class="button cta-text block text-black" id="getRecommendPlans" ng-click="vm.getRecommendPlans()">Contine without Street Address</button>
-                    </div>
-              
+                <div class="medium-3 columns">
+                    <input id="lrstate" placeholder="State" title="Zip code" zipcode="" ng-model="vm.state">
+                </div>
+                <div class="medium-3 columns">
+                    <input id="lrzipcode" placeholder="Zip code" title="Zip code" zipcode="" ng-model="vm.zipcode" ng-change="vm.getZipInfo()">
+                </div>
+                <div class="medium-12 columns">
+                    <button class="button cta-text block text-black" id="getRecommendPlans" ng-click="vm.getRecommendPlans()">Contine</button>
+                </div>
+
             </div>
-          
+
             <!--<span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow" ng-click="vm.update()" ></span>-->
         </li>
-        </ul>
+    </ul>
 </div>

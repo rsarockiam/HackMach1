@@ -107,7 +107,6 @@ angular.module('vzMach')
 	        vm.index = (vm.index + 1) % (vm.slides.length);
 	        vm.listIndex = 0;
 	    };
-
 	    vm.goPrev = function ()
 	    {
 	        if (vm.index == 0)
@@ -115,16 +114,14 @@ angular.module('vzMach')
 	        vm.index--;
 	        vm.listIndex = 0;
 	    };
-
 	    vm.goNextPlan = function () {
 	        vm.listIndex = (vm.listIndex + 1) % (vm.slides[vm.index].plans.length);
-	    };
-
+	    }
 	    vm.goPrevPlan = function () {
 	        if (vm.listIndex == 0)
 	            vm.listIndex = vm.slides[vm.index].plans.length;
 	        vm.listIndex--;
-	    };
+	    }
 
 	    return vm;
 	}

@@ -15,6 +15,9 @@ angular.module('vzMach')
 	    vm.select = function () {
 	        $state.go("recommendedPlan");
 	    };
+	    vm.OnBuildBundleClick = function () {
+	        $state.go("byo");
+	    };
 	    return vm;
 	}
   ]);

@@ -28,9 +28,10 @@ angular
     //'Services',
     //'Constants',
     //'Shared',
-    'ui.bootstrap',    
-    'ngStorage'
-    
+    'ui.bootstrap',
+    'ngStorage',
+    'rzModule'
+
   ])
   .provider('globalInitializers', function globalInitializersProvider() {
       this.$get = function () {
@@ -78,7 +79,7 @@ angular
            })
         .state('byo', {
             url: "/byo",
-            templateUrl: 'components/byob/byob.html',
+            templateUrl: 'components/build-plan/build-plan.html',
             params: {
                 serviceType: null,
             },

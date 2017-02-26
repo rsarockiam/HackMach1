@@ -1,22 +1,23 @@
 ﻿<div class="row clearfix fluid-grid">
     <ul class="w_vz-lineup tiny-block-grid-1 large-block-grid-3">
-        <li class="w_vz-lineup-item w_vz-lineup-item--tall w_vz-loopqual w_vz-lineup-sub-header" style="height:calc(25vh - 15px);">
-            <button class="button mw-large margin-bottom-medium" ng-click="vm.select()">Popular Verizon plan</button>
+        <li class="w_vz-lineup-item w_vz-lineup-item--tall" ng-click="vm.select()" style="height:calc(25vh - 15px);">
+            <div>Recommended for you</div>
+            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow"></span>
         </li>
         <li><hr style="margin:0;" /></li>
-        <li class="w_vz-lineup-item w_vz-lineup-item--tall" style="height:calc(25vh - 15px);">
+        <li class="w_vz-lineup-item w_vz-lineup-item--tall" ng-click="vm.select()" style="height:calc(25vh - 15px);">
             <div>Popular plan in your city</div>
-            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow" ng-click="vm.select()"></span>
+            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow"></span>
         </li>
         <li><hr style="margin:0;" /></li>
-        <li class="w_vz-lineup-item w_vz-lineup-item--tall" style="height:calc(25vh - 15px);">
-            <div>Most economy plans</div>
-            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow" ng-click="vm.select()"></span>
+        <li class="w_vz-lineup-item w_vz-lineup-item--tall" ng-click="vm.select()" style="height:calc(25vh - 15px);">
+            <div>New plans</div>
+            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow"></span>
         </li>
         <li><hr style="margin:0;" /></li>
-        <li class="w_vz-lineup-item w_vz-lineup-item--tall" style="height:calc(25vh - 10px);">
+        <li class="w_vz-lineup-item w_vz-lineup-item--tall" ng-click="vm.OnBuildBundleClick()" style="height:calc(25vh - 10px);">
             <div>Build ur own</div>
-            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow" ng-click="vm.select()"></span>
+            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow"></span>
         </li>
     </ul>
 </div>

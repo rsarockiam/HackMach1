@@ -2958,3 +2958,25 @@ lh-drop-list, [lh-drop-list] {
         left: -30px;
         transform: 0; } }
 
+
+.slider-control {
+  height: 1em;
+  padding-top: .5em;
+}
+
+.slider {
+  height: 2px;
+  border: 1px solid black;
+}
+
+.slider-handle {
+  height: 1em;
+  width: 1em;
+  border: 1px solid black;
+  border-radius: 2px;
+  background: #fff;
+  cursor: pointer;  
+}
+.slider-handle:hover {
+  background: #ddd;
+}

@@ -7,14 +7,24 @@ using System.IO;
 using System.Data.OleDb;
 namespace VzMach.Helper
 {
-    public class ExcelHelper
+    public static class ExcelHelper
     {
+        private static DataSet _excelData = null;
+        public static DataSet ExcelData
+        {
+            get
+            {
+                if (_excelData == null)
+                    _excelData = LoadDataSetFromExcel("~/App_Data/Data.Xlsx");
+                return _excelData;
+            }
+        }
         public static DataSet LoadDataSetFromExcel(string filePath)
         {
 
             DataSet ds=new DataSet();
             DataTable dt = null,dt2=null;
-            if (Path.GetExtension(filePath).Contains("xls"))
+            if (Path.GetExtension(filePath).ToLower().Contains("xls"))
             {
                 OleDbConnection objConn = null;
                 OleDbDataAdapter oleDA = null;

@@ -6,18 +6,20 @@ using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json;
 using System.Dynamic;
+using VzMach.Helper;
 
 namespace VzMach.WebApi
 {
     public class MachController : ApiController
     {
+       
         #region LocationDetails
         [Route("~/WebApi/GetLocaionDetails")]
         [HttpGet]
         #endregion
         public IHttpActionResult GetLocaionDetails(string type="")
         {
-
+            var x = ExcelHelper.ExcelData;
             dynamic location = null;
             return location;
         }

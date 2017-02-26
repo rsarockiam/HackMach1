@@ -66,7 +66,8 @@ angular
         .state('recommended', {
             url: "/customize",
             templateUrl: "components/recommended/recommended.html",
-            controller: "recommendedController"
+            controller: "recommendedController",
+            controllerAs: 'vm'
         })
            .state('plans', {
                url: "/plans",
@@ -81,7 +82,13 @@ angular
             },
             controller: 'byobController',
             controllerAs: 'vm'
-        });
+        })
+      .state('recommendedPlan', {
+          url: "/selected",
+          templateUrl: 'components/recommended/recommendedPlan.html',
+          controller: 'recommendedPlanController',
+          controllerAs: 'vm'
+      });
 
 
   })

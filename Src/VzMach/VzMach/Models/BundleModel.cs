@@ -21,6 +21,7 @@ namespace VzMach.Models
     }
     public class RecommendModel
     {
+        public List<BundleModel> NewlyReleasedBundle { get; set; }
         public List<BundleModel> ZipPopularBundle { get; set; }
         public List<BundleModel> CntryPopularBundle { get; set; }
         public List<BundleModel> SubPopularBundle { get; set; }

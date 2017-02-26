@@ -9,7 +9,7 @@
  */
 
 angular.module('vzMach')
-  .controller('landingController', ['$scope', '$state', '$rootScope', '$timeout','vzService',
+  .controller('landingController', ['$scope', '$state', '$rootScope', '$timeout', 'vzService',
 	function ($scope, $state, $rootScope, $timeout, vzService) {
 	    var vm = this;
 	    vm.update = function () {
@@ -18,14 +18,20 @@ angular.module('vzMach')
 	    vm.continue = function () {
 	        $state.go("recommended");
 	    };
-	    vzService.getIP().then(function (data) {
-	        vm.city = data.city;
-	        vm.state = vzService.getStateCode(data.region);
-	        vm.zipcode = parseInt(data.postal);
-	    })
+	    vm.init = function () {
+	        vzService.getIP().then(function (data) {
+	            vm.city = data.city;
+	            vm.state = vzService.getStateCode(data.region);
+	            vm.zipcode = parseInt(data.postal);
+	        })
+	    };
+	    vm.getRecommendPlans = function () {
+	        vzService.getRecommendPlans(vm.zipcode).then(function (data) {
+	            console.log(JSON.parse(data));
+	        })
+	    }
 	    vm.getZipInfo = function () {
-	        if (vm.zipcode.toString().length == 5)
-	        {
+	        if (vm.zipcode.toString().length == 5) {
 	            vzService.getZipDetails(vm.zipcode).then(function (data) {
 	                vm.city = data.city;
 	                vm.state = data.state;
@@ -37,7 +43,7 @@ angular.module('vzMach')
 	        vzService.setState(vm.state)
 	        $state.go("recommendedPlan");
 	    }
-	   
+	    vm.init();
 	    return vm;
 	}
   ]);

@@ -39,7 +39,9 @@ angular.module('vzMach')
 	        }
 	    }
 	    vm.continueWithoutStreetAddress = function () {
-
+	        vzService.setZipcode(vm.zipcode)
+	        vzService.setState(vm.state)
+	        $state.go("recommendedPlan");
 	    }
 	    vm.init();
 	    return vm;

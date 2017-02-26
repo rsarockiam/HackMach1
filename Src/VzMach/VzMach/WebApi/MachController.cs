@@ -17,6 +17,7 @@ namespace VzMach.WebApi
     {
         DataSet Data { get { return ExcelHelper.ExcelData; } }
         const string zipPopular = "ZIPPOPULAR"; const string countryPopular = "COUNTRYPOPULAR"; const string subbndlValue = "SubBundleValue";
+        const string newlyaddedbundle = "NEWLYADDED";
         #region LocationDetails
         [Route("~/WebApi/GetLocaionDetails")]
         [HttpGet]
@@ -47,17 +48,18 @@ namespace VzMach.WebApi
         public IHttpActionResult GetRecommendPlans(string ZipCode)
         {
             RecommendModel recModel = new RecommendModel();
-            recModel.ZipPopularBundle = new List<BundleModel>();
-            recModel.CntryPopularBundle = new List<BundleModel>();
-            recModel.SubPopularBundle = new List<BundleModel>();
+           
+           
 
             var x = Data.Tables[0].AsEnumerable().FirstOrDefault(tt => (tt.Field<string>("Zipcode") == ZipCode));
             var zipPop = x[zipPopular].ToString().Split(new string[] { (",") }, StringSplitOptions.RemoveEmptyEntries);
             var cntryPop = x[countryPopular].ToString().Split(new string[] { (",") }, StringSplitOptions.RemoveEmptyEntries);
             var subbndl = x[subbndlValue].ToString().Split(new string[] { (",") }, StringSplitOptions.RemoveEmptyEntries);
+            var newlyadded = x[newlyaddedbundle].ToString().Split(new string[] { (",") }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var popbundId in zipPop)
             {
+                recModel.ZipPopularBundle = new List<BundleModel>();
                 var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == popbundId.Trim());
                 if (row != null)
                 {
@@ -77,7 +79,8 @@ namespace VzMach.WebApi
             }
             foreach (var popbundId in cntryPop)
             {
-
+                recModel.CntryPopularBundle = new List<BundleModel>();
+               
                 var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == popbundId.Trim());
                 if (row != null)
                 {
@@ -97,7 +100,7 @@ namespace VzMach.WebApi
             }
             foreach (var popbundId in subbndl)
             {
-
+                recModel.SubPopularBundle = new List<BundleModel>();
                 var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == popbundId.Trim());
                 if (row != null)
                 {
@@ -113,6 +116,26 @@ namespace VzMach.WebApi
                     bun.Discount = row["Discount"].ToString();
                     bun.Keyword = row["Keyword"].ToString();
                     recModel.SubPopularBundle.Add(bun);
+                }
+            }
+            foreach (var popbundId in newlyadded)
+            {
+                recModel.NewlyReleasedBundle = new List<BundleModel>();
+                var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == popbundId.Trim());
+                if (row != null)
+                {
+                    BundleModel bun = new BundleModel();
+                    bun.BundleId = row["BundleId"].ToString();
+                    bun.Type = row["Type"].ToString();
+                    bun.Name = row["Name"].ToString();
+                    bun.Price = row["Price"].ToString();
+                    bun.DAT = row["DAT"].ToString();
+                    bun.TV = row["TV"].ToString();
+                    bun.VOICE = row["VOICE"].ToString();
+                    bun.ROUTER = row["ROUTER"].ToString();
+                    bun.Discount = row["Discount"].ToString();
+                    bun.Keyword = row["Keyword"].ToString();
+                    recModel.NewlyReleasedBundle.Add(bun);
                 }
             }
 

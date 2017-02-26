@@ -15,7 +15,7 @@ angular.module('vzMach')
 	    vm.index = 0;
 	    vm.listIndex = 0;
 	    var zipcode = vzService.getZipcode();
-	    vzService.getRecommendPlans().then(function (data) {
+	    vzService.getRecommendPlans(zipcode).then(function (data) {
 	        console.log(data);
 	    })
 	    vm.slides = [

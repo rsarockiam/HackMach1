@@ -5,6 +5,8 @@ using System.Text;
 using System.Data;
 using System.IO;
 using System.Data.OleDb;
+using System.Web;
+
 namespace VzMach.Helper
 {
     public static class ExcelHelper
@@ -15,7 +17,7 @@ namespace VzMach.Helper
             get
             {
                 if (_excelData == null)
-                    _excelData = LoadDataSetFromExcel("~/App_Data/Data.Xlsx");
+                    _excelData = LoadDataSetFromExcel(HttpContext.Current.Server.MapPath("~/App_Data/Data.Xlsx"));
                 return _excelData;
             }
         }

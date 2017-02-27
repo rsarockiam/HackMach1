@@ -1,30 +1,45 @@
-﻿
-<div class="row">
-    <div class="columns padding-vert-zero">
-        <div style="text-align:center">
-            <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrev()"> < </h4>
-            <h4 style="display:inline-block;margin-left:50px;margin-right:50px" class="">{{vm.slides[vm.index].text}}</h4>
-            <h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNext()"> > </h4>
+﻿<div class="row clearfix fluid-grid">
+    <div id="plans">
+        <div class="row">
+            <div class="columns padding-vert-zero">
+                <div style="text-align:center">
+                    <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrev()"> < </h4>
+                    <h4 style="display:inline-block;margin-left:50px;margin-right:50px" class="">{{vm.slides[vm.index].text}}</h4>
+                    <h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNext()"> > </h4>
+                </div>
+
+            </div>
+        </div>
+        <div class="row" style="margin-top:50px">
+            <div class="columns padding-vert-zero">
+                <div style="text-align:center">
+                    <h1>{{vm.slides[vm.index].plans[vm.listIndex].planName}}</h1>
+                    <h4>{{vm.slides[vm.index].plans[vm.listIndex].Description}}</h4>
+                    <h4>${{vm.slides[vm.index].plans[vm.listIndex].Price}}</h4>
+                    <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrevPlan()"> < </h4>
+                    <h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNextPlan()"> > </h4>
+                </div>
+            </div>
+            <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseBundle()">Choose this Bundle</button>
+        </div>
+    </div>
+    <div class="row" style="margin-top:50px;display:none" id="equipment">
+        <p>Following are our recommended Equipment bundles. Grab any?</p>
+        <h4>{{vm.equipments[vm.equipIndex].Name}}</h4>
+        <h4>${{vm.equipments[vm.equipIndex].Price}}</h4>
+        <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrevEquip()"> < </h4>
+        <h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNextEquip()"> > </h4>
+        <div class="row">
+            <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseEquipment()">Yes</button>
+            <button class="button mw-medium margin-bottom-medium" ng-click="vm.rejectEquipment()">No</button>
+            <button class="button mw-medium margin-bottom-medium" ng-click="vm.goBack()">Back</button>
         </div>
 
     </div>
-</div>
-<div class="row" style="margin-top:50px">
-    <div class="columns padding-vert-zero">
-        <div style="text-align:center">
-            <h1>{{vm.slides[vm.index].plans[vm.listIndex].planName}}</h1>
-            <h4>{{vm.slides[vm.index].plans[vm.listIndex].Description}}</h4>
-            <h4>${{vm.slides[vm.index].plans[vm.listIndex].Price}}</h4>
-            <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrevPlan()"> < </h4>
-            <h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNextPlan()"> > </h4>
-        </div>
+    <div class="row" id="chosenBundle" style="display:none">
+        <p>{{vm.chosenBundleMessage}}</p>
+        <button class="button mw-medium margin-bottom-medium" >Confirm</button>
+        <button class="button mw-medium margin-bottom-medium" ng-click="vm.cancel()">Cancel</button>
     </div>
-</div>
-
-<div class="w_vz-workflow-button-container row fluid-grid" ng-class="{'button-container--scrolled': true}">
-    <div class="w_vz-workflow--button w_vz-workflow--button-checkout">
-        <a ng-click="vm.buildplanButtonClick()"  class="button text-center">
-            <span>Review lineup</span>
-        </a>
     </div>
-</div>
+    

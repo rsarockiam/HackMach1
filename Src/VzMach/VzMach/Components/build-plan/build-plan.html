@@ -1,6 +1,76 @@
 ﻿<div class="row">
-    <uib-carousel>
-        <uib-slide></uib-slide>
-    </uib-carousel>
-    <rzslider rz-slider-model="slider_translate.minValue" rz-slider-high="slider_translate.maxValue" rz-slider-options="slider_translate.options"></rzslider>
+    <div class="wrapper">
+        <article>
+            <rzslider rz-slider-model="slider_translate.minValue" rz-slider-high="slider_translate.maxValue" rz-slider-options="slider_translate.options"></rzslider>
+        </article>
+    </div>
+</div>
+<div class="row">
+    <input type="checkbox" class="lh-checkbox" ng-model="vm.isTvOnly" />
+    <label class="normal-weight" role="checkbox">TV Only</label>
+    <input type="checkbox" class="lh-checkbox" ng-model="vm.isDataOnly" />
+    <label class="normal-weight" role="checkbox">Data Only</label>
+    <input type="checkbox" class="lh-checkbox" ng-model="vm.isBoth" />
+    <label class="normal-weight" role="checkbox">Both</label>
+</div>
+<div class="row clearfix fluid-grid">
+    <ul class="w_vz-lineup tiny-block-grid-1 medium-block-grid-1 large-block-grid-3">
+        <li ng-show="vm.isBoth" class="w_vz-lineup-item w_vz-lineup-item--tall" ng-repeat="plan in vm.plans" ng-if="plan.price>= slider_translate.minValue && plan.price<= slider_translate.minValue">
+            <div class="w_vz-lineup-item-inner">
+                <h3 class="w_vz-lineup-name" ng-bind-html="plan.BundleTitle"></h3>
+                <p class="w_vz-lineup-price">{{plan.TotalPrice}}/mo</p>
+            </div>
+            <div class="w_vz-lineup-item-bottom-container">
+                <p class="bold w_vz-lineup-item-price">{{config.TotalPrice}}/mo</p>
+                <ul ng-repeat="service in plan.Services">
+                    <li><b>{{service.ServiceTitle}}</b></li>
+                    <li>{{service.Plans[0].ServiceName}} {{service.Plans[0].ServiceNameUnit}}</li>
+                </ul>
+            </div>
+            <div class="w_vz-plan__channellineup" ng-if="!plan.isDataOnly">
+                <span class="w_vz-plan__linupinner"> View channels <span class="text-chevron vzlhicon vzlicon-chevron-right"></span></span>
+            </div>
+        </li>
+
+        <li ng-show="vm.isDataOnly" class="w_vz-lineup-item w_vz-lineup-item--tall" ng-repeat="plan in vm.plans" ng-if="plan.price>= slider_translate.minValue && plan.price<= slider_translate.minValue && plan.isDataOnly">
+            <div class="w_vz-lineup-item-inner">
+                <h3 class="w_vz-lineup-name" ng-bind-html="plan.BundleTitle"></h3>
+                <p class="w_vz-lineup-price">{{plan.TotalPrice}}/mo</p>
+            </div>
+            <div class="w_vz-lineup-item-bottom-container">
+                <p class="bold w_vz-lineup-item-price">{{config.TotalPrice}}/mo</p>
+                <ul ng-repeat="service in plan.Services">
+                    <li><b>{{service.ServiceTitle}}</b></li>
+                    <li>{{service.Plans[0].ServiceName}} {{service.Plans[0].ServiceNameUnit}}</li>
+                </ul>
+            </div>
+          
+
+        </li>
+
+
+        <li ng-show="vm.isTvOnly" ng-click="vm.onPlanSelect(plan.BundleId)" class="w_vz-lineup-item w_vz-lineup-item--tall" ng-repeat="plan in vm.plans" ng-if="plan.price>= slider_translate.minValue && plan.price<= slider_translate.minValue && plan.isTvOnly">
+            <div class="w_vz-lineup-item-inner">
+                <h3 class="w_vz-lineup-name" ng-bind-html="plan.BundleTitle"></h3>
+                <p class="w_vz-lineup-price">{{plan.TotalPrice}}/mo</p>
+            </div>
+            <div class="w_vz-lineup-item-bottom-container">
+                <p class="bold w_vz-lineup-item-price">{{config.TotalPrice}}/mo</p>
+                <ul ng-repeat="service in plan.Services">
+                    <li><b>{{service.ServiceTitle}}</b></li>
+                    <li>{{service.Plans[0].ServiceName}} {{service.Plans[0].ServiceNameUnit}}</li>
+                </ul>
+            </div>
+            <div class="w_vz-plan__channellineup">
+                <span class="w_vz-plan__linupinner"> View channels <span class="text-chevron vzlhicon vzlicon-chevron-right"></span></span>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="w_vz-workflow-button-container row fluid-grid" ng-class="{'button-container--scrolled': true}">
+    <div class="w_vz-workflow--button w_vz-workflow--button-checkout">
+        <a ng-click="preConfigContinue(selectedPreConfigs, 'review')" ng-class="{disabled: vm.checkoutButton }" class="button text-center">
+            <span>Review lineup</span>
+        </a>
+    </div>
 </div>

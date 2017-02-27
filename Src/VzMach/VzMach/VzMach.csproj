@@ -275,8 +275,10 @@
     <Content Include="Components\recommended\recommended.controller.js" />
     <Content Include="Components\recommended\recommended.html" />
     <Content Include="Components\recommended\recommendedPlan.controller.js" />
+    <Content Include="Components\review\review.controller.js" />
     <Content Include="Components\shared\vzService.js" />
     <Content Include="Components\slider\slider.directive.js" />
+    <Content Include="Components\Styles\rzSilder.css" />
     <Content Include="Components\Styles\style.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

@@ -2959,24 +2959,50 @@ lh-drop-list, [lh-drop-list] {
         transform: 0; } }
 
 
-.slider-control {
-  height: 1em;
-  padding-top: .5em;
-}
 
-.slider {
-  height: 2px;
-  border: 1px solid black;
-}
 
-.slider-handle {
-  height: 1em;
-  width: 1em;
-  border: 1px solid black;
-  border-radius: 2px;
-  background: #fff;
-  cursor: pointer;  
+
+
+/** {
+    margin: 0;
+    padding: 0;
 }
-.slider-handle:hover {
-  background: #ddd;
+body {
+    font-family:'Open Sans', sans-serif;
+    color: #1f2636;
+    font-size: 14px;
+    padding-bottom: 40px;
+}
+header {
+    background: #0db9f0;
+    color: #fff;
+    margin: -40px;
+    margin-bottom: 40px;
+    text-align: center;
+    padding: 40px 0;
+}*/
+h1 {
+    font-weight: 300;
+}
+h2 {
+    margin-bottom:10px;
+}
+.wrapper {
+    background: #fff;
+    padding: 40px;
+}
+article {
+    margin-bottom: 10px;
+}
+.tab-pane {
+    padding-top: 10px;
+}
+.field-title {
+    width: 100px;
+}
+.vertical-sliders {
+    margin: 0;
+}
+.vertical-sliders > div {
+    height: 250px;
 }

@@ -15,97 +15,49 @@ angular.module('vzMach')
 	    vm.index = 0;
 	    vm.listIndex = 0;
 	    var zipcode = vzService.getZipcode();
+	    var state = vzService.getState();
+	    var result = {};
 	    vzService.getRecommendPlans(zipcode).then(function (data) {
-	        console.log(data);
+	        result = JSON.parse(data);
+            console.log(result)
+	        fillData();
 	    })
-	    vm.slides = [
-          {
-              text: 'Triple Play',
-              plans: [
-                  {
-                      planName: "Triple Play 1",
-                      Description: "Triple Play 1 Description",
-                  },
-                  {
-                      planName: "Triple Play 2",
-                      Description: "Triple Play 2 Description",
-                  },
-                  {
-                      planName: "Triple Play 3",
-                      Description: "Triple Play 3 Description",
-                  },
-                  {
-                      planName: "Triple Play 4",
-                      Description: "Triple Play 4 Description",
-                  },
-              ]
-
-          },
-          {
-              text: 'Double Play',
-              plans: [
-                  {
-                      planName: "Double Play 1",
-                      Description: "Double Play 1 Description",
-                  },
-                  {
-                      planName: "Double Play 2",
-                      Description: "Double Play 2 Description",
-                  },
-                  {
-                      planName: "Double Play 3",
-                      Description: "Double Play 3 Description",
-                  },
-                  {
-                      planName: "Double Play 4",
-                      Description: "Double Play 4 Description",
-                  },
-              ]
-          },
-          {
-              text: 'Standalone Internet',
-              plans: [
-                  {
-                      planName: "Standalone Internet 1",
-                      Description: "Standalone Internet 1 Description",
-                  },
-                  {
-                      planName: "Standalone Internet 2",
-                      Description: "Standalone Internet 2 Description",
-                  },
-                  {
-                      planName: "Standalone Internet 3",
-                      Description: "Standalone Internet 3 Description",
-                  },
-                  {
-                      planName: "Standalone Internet 4",
-                      Description: "Standalone Internet 4 Description",
-                  },
-              ]
-          },
-          {
-              text: 'Standalone TV'
-              ,
-              plans: [
-                  {
-                      planName: "Standalone TV 1",
-                      Description: "Standalone TV 1 Description",
-                  },
-                  {
-                      planName: "Standalone TV 2",
-                      Description: "Standalone TVt 2 Description",
-                  },
-                  {
-                      planName: "Standalone TV 3",
-                      Description: "Standalone TV 3 Description",
-                  },
-                  {
-                      planName: "Standalone TV 4",
-                      Description: "Standalone TV 4 Description",
-                  },
-              ]
-          }
-	    ];
+	    vm.slides=[];
+	    //{"NewlyReleasedBundle":[{"BundleId":"B0031","Type":"CORE","Name":"DoublePlay",
+	    //    "Price":"124.98","DAT":"100M","TV":"Extreme","VOICE":"","ROUTER":"","Discount":"","Keyword":"DAT_TV"}],
+        //    "ZipPopularBundle":[{"BundleId":"B0004","Type":"CORE","Name":"TriplePlay","Price":"139.98","DAT":"50M","TV":"Ultimate",
+        //        "VOICE":"Unlimited","ROUTER":"","Discount":"","Keyword":"DAT_TV_VOICE"}],
+        //    "CntryPopularBundle":[{"BundleId":"B0008","Type":"CORE","Name":"TriplePlay",
+        //        "Price":"89.99","DAT":"75M","TV":"Ultimate","VOICE":"Unlimited",
+        //        "ROUTER":"","Discount":"","Keyword":"DAT_TV_VOICE"}],
+        //    "SubPopularBundle":[{"BundleId":"C0004","Type":"COMP",
+        //        "Name":"Equipment","Price":"24.99","DAT":"","TV":"1 TV+ Enhanced Recording","VOICE":"","ROUTER":"BHR5","Discount":"","Keyword":"REC_ROT"}]}
+	    function fillData() {
+	        var obj = {};
+	        vm.slides = [];
+	        constructVwObject(result.NewlyReleasedBundle, "Newly Released");
+	        constructVwObject(result.ZipPopularBundle, "Popular in "+state);
+	        constructVwObject(result.CntryPopularBundle, "Popular in US");
+	        function constructVwObject(bundles, categoryName) {
+	            obj = {};
+	            obj.plans = [];
+	            obj.text = categoryName;
+	            for (var i = 0 ; i < bundles.length; i++) {
+	                var planObj = {};
+	                planObj.planName = bundles[i].Name;
+	                planObj.Description = "";
+	                if (bundles[i].DAT != "")
+	                    planObj.Description += bundles[i].DAT + " Internet  ";
+	                if (bundles[i].TV != "")
+	                    planObj.Description += "+ " + bundles[i].TV + " TV";
+	                if (bundles[i].VOICE != "")
+	                    planObj.Description += "+ " + bundles[i].VOICE + " Voice";
+	                planObj.Price = bundles[i].Price;
+	                obj.plans.push(planObj);
+	            }
+	            vm.slides.push(obj);
+	        }
+	    }
 
 	    vm.goNext = function () {
 	        vm.index = (vm.index + 1) % (vm.slides.length);

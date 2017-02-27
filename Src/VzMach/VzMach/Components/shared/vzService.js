@@ -72,7 +72,10 @@
                    .success(function (data) {
                        var result = {};
                        result.city = data.results[0].address_components[1].short_name;
-                       result.state = data.results[0].address_components[3].short_name;
+                       var stateObj = _.filter(data.results[0].address_components, function (o) {
+                           return o.types[0] == "administrative_area_level_1";
+                       });
+                       result.state = stateObj[0].short_name;
                        deferred.resolve(result);
                    })
                    .error(function (err) {

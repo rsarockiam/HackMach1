@@ -96,14 +96,6 @@ angular.module('vzMach')
 	            vm.listIndex = vm.slides[vm.index].plans.length;
 	        vm.listIndex--;
 	    }
-	    vm.goNextEquip = function () {
-	        vm.equipIndex = (vm.equipIndex + 1) % (vm.equipments.length);
-	    };
-	    vm.goPrevEquip = function () {
-	        if (vm.equipIndex == 0)
-	            vm.equipIndex = vm.equipments.length;
-	        vm.equipIndex--;
-	    };
 	    
 	    
 	    vm.chooseBundle = function () {
@@ -118,13 +110,13 @@ angular.module('vzMach')
 	        $("#equipment").slideDown();
 	    }
 	    vm.chooseEquipment = function () {
-	        vm.chosenBundleMessage = "You have chosen " + vm.slides[vm.index].plans[vm.listIndex].planName + " + " + vm.equipments[vm.equipIndex].Name;
+	        vm.chosenBundleMessage = vm.slides[vm.index].plans[vm.listIndex].planName + " + " + vm.equipments[vm.equipIndex].Name;
 	        $("#equipment").slideUp();
 	        $("#chosenBundle").slideDown();
 	        
 	    }
 	    vm.rejectEquipment = function () {
-	        vm.chosenBundleMessage = "You have chosen " + vm.slides[vm.index].plans[vm.listIndex].planName;
+	        vm.chosenBundleMessage =  vm.slides[vm.index].plans[vm.listIndex].planName;
 	        $("#equipment").slideUp();
 	        $("#chosenBundle").slideDown();
 	    }

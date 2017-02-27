@@ -108,7 +108,7 @@
             },
             UpdateCart: function (BundleId) {
                 var deferred = $q.defer();
-                $http.get('/WebApi/UpdateCart/BundleId' + BundleId)
+                $http.get('/WebApi/UpdateCart?BundleId=' + BundleId)
                     .success(function (data) {
                         deferred.resolve(data);
                     })

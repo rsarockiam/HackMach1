@@ -11,10 +11,11 @@ using VzMach.Models;
 using System.IO;
 using System.Data;
 using System.Web.SessionState;
+using System.Web;
 
 namespace VzMach.WebApi
 {
-    public class MachController : ApiController
+    public class MachController : ApiController, IRequiresSessionState
     {
         DataSet Data { get { return ExcelHelper.ExcelData; } }
         const string zipPopular = "ZIPPOPULAR"; const string countryPopular = "COUNTRYPOPULAR"; const string subbndlValue = "SubBundleValue";
@@ -205,12 +206,14 @@ namespace VzMach.WebApi
 
         #region UpdateCart
         [Route("~/WebApi/UpdateCart")]
-        [HttpPost]
+        [HttpGet]
         #endregion
 
-        public void UpdateCart(string BundleId)
+        public bool UpdateCart(string BundleId)
         {
-            Session["BundleId"] = BundleId;
+            var session = HttpContext.Current.Session;
+            session["BundleId"] = BundleId;
+            return true;
         }
 
         #region GetCart

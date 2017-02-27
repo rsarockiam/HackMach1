@@ -149,6 +149,18 @@ angular.module('vzMach')
 	            $scope.slider_all_options.maxValue = 8;
 	        }
 	    }
+	    vm.checkoutButton = true;
+	    vm.checkoutButtonClick = function () {
+	     
+	    };
+	    vm.onPlanSelect = funcation(bundleId)
+	    {
+	        //check select /deselect
+            //update bundle id to cart
+	    };
+	    vm.init = function ()
+	    { };
+	    vm.init();
 	    return vm;
 	}
   ]);

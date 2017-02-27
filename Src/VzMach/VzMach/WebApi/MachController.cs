@@ -194,7 +194,7 @@ namespace VzMach.WebApi
 
         #region UpdateAddress
         [Route("~/WebApi/UpdateAdderss")]
-        [HttpGet]
+        [HttpPost]
         #endregion
 
         public void UpdateAddress(Address address)
@@ -205,7 +205,7 @@ namespace VzMach.WebApi
 
         #region UpdateCart
         [Route("~/WebApi/UpdateCart")]
-        [HttpGet]
+        [HttpPost]
         #endregion
 
         public void UpdateCart(string BundleId)

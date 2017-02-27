@@ -1,4 +1,4 @@
-﻿<div class="row">
+﻿<div class="row padding-all-tiny">
     <div class="wrapper">
         <article>
             <rzslider rz-slider-model="slider_translate.minValue" rz-slider-high="slider_translate.maxValue" rz-slider-options="slider_translate.options"></rzslider>
@@ -14,8 +14,9 @@
     <label class="normal-weight" role="checkbox">Both</label>
 </div>
 <div class="row clearfix fluid-grid">
-    <ul class="w_vz-lineup tiny-block-grid-1 medium-block-grid-1 large-block-grid-3">
-        <li ng-show="vm.isBoth" class="w_vz-lineup-item w_vz-lineup-item--tall" ng-repeat="plan in vm.plans" ng-if="plan.price>= slider_translate.minValue && plan.price<= slider_translate.minValue">
+
+    <div class="swiper-container strech" data-swiper="plan" dat-swiper-options='{"autoHeight":true,"loop":false}'>
+        <div class="swiper_item" ng-show="vm.isBoth" ng-repeat="plan in vm.plans" ng-if="plan.price>= slider_translate.minValue && plan.price<= slider_translate.minValue">
             <div class="w_vz-lineup-item-inner">
                 <h3 class="w_vz-lineup-name" ng-bind-html="plan.BundleTitle"></h3>
                 <p class="w_vz-lineup-price">{{plan.TotalPrice}}/mo</p>
@@ -30,9 +31,9 @@
             <div class="w_vz-plan__channellineup" ng-if="!plan.isDataOnly">
                 <span class="w_vz-plan__linupinner"> View channels <span class="text-chevron vzlhicon vzlicon-chevron-right"></span></span>
             </div>
-        </li>
+        </div>
 
-        <li ng-show="vm.isDataOnly" class="w_vz-lineup-item w_vz-lineup-item--tall" ng-repeat="plan in vm.plans" ng-if="plan.price>= slider_translate.minValue && plan.price<= slider_translate.minValue && plan.isDataOnly">
+        <div ng-show="vm.isDataOnly" class="swiper_item" ng-repeat="plan in vm.plans" ng-if="plan.price>= slider_translate.minValue && plan.price<= slider_translate.minValue && plan.isDataOnly">
             <div class="w_vz-lineup-item-inner">
                 <h3 class="w_vz-lineup-name" ng-bind-html="plan.BundleTitle"></h3>
                 <p class="w_vz-lineup-price">{{plan.TotalPrice}}/mo</p>
@@ -44,12 +45,12 @@
                     <li>{{service.Plans[0].ServiceName}} {{service.Plans[0].ServiceNameUnit}}</li>
                 </ul>
             </div>
-          
-
-        </li>
 
 
-        <li ng-show="vm.isTvOnly" ng-click="vm.onPlanSelect(plan.BundleId)" class="w_vz-lineup-item w_vz-lineup-item--tall" ng-repeat="plan in vm.plans" ng-if="plan.price>= slider_translate.minValue && plan.price<= slider_translate.minValue && plan.isTvOnly">
+        </div>
+
+
+        <div ng-show="vm.isTvOnly" ng-click="vm.onPlanSelect(plan.BundleId)" class="swiper_item" ng-repeat="plan in vm.plans" ng-if="plan.price>= slider_translate.minValue && plan.price<= slider_translate.minValue && plan.isTvOnly">
             <div class="w_vz-lineup-item-inner">
                 <h3 class="w_vz-lineup-name" ng-bind-html="plan.BundleTitle"></h3>
                 <p class="w_vz-lineup-price">{{plan.TotalPrice}}/mo</p>
@@ -64,13 +65,13 @@
             <div class="w_vz-plan__channellineup">
                 <span class="w_vz-plan__linupinner"> View channels <span class="text-chevron vzlhicon vzlicon-chevron-right"></span></span>
             </div>
-        </li>
-    </ul>
-</div>
-<div class="w_vz-workflow-button-container row fluid-grid" ng-class="{'button-container--scrolled': true}">
-    <div class="w_vz-workflow--button w_vz-workflow--button-checkout">
-        <a ng-click="checkoutButtonCLick()" ng-class="{disabled: vm.checkoutButton }" class="button text-center">
-            <span>Review lineup</span>
-        </a>
+        </div>
     </div>
+</div>
+<div class="row fluid-grid" ng-class="{'button-container--scrolled': true}" style="position:fixed;bottom:0;width:100%;">
+
+    <a ng-click="checkoutButtonCLick()" ng-class="{disabled: vm.checkoutButton }" class="button text-center no-icon">
+        Review lineup
+    </a>
+
 </div>

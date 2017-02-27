@@ -286,6 +286,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="core\vz-lighthouse\fonts\VZLighthouse.svg" />
+    <Content Include="core\vzrf-extend\js\vzrfinit.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -325,6 +327,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\Data.xlsx" />
+    <Content Include="core\vz-lighthouse\fonts\selection.json" />
+    <Content Include="core\vz-lighthouse\fonts\VZLighthouse.eot" />
+    <Content Include="core\vz-lighthouse\fonts\VZLighthouse.ttf" />
+    <Content Include="core\vz-lighthouse\fonts\VZLighthouse.woff" />
+    <Content Include="core\vz-lighthouse\stylesheets\font-icon.scss" />
+    <Content Include="core\vz-lighthouse\stylesheets\variables.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

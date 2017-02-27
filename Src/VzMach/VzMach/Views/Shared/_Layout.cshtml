@@ -13,11 +13,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="//respframework.verizon.com/vzrf/2-20-0/stylesheets/complete/vzrf.css" rel="stylesheet" />
+    <script src="//respframework.verizon.com/vzrf/2-20-0/js/complete/vzrf.js"></script>
+    <script src="~/core/vzrf-extend/js/vzrfinit.js"></script>
     <!-- build:css(.) styles/vendor.css -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="~/main.css">
-    <link rel="stylesheet" href="~/content/bootstrap.css">
+    @*<link rel="stylesheet" href="~/content/bootstrap.css">*@
     <link href="~/Components/Styles/rzSilder.css" rel="stylesheet" />
     <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
@@ -27,6 +29,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="~/app.js"></script>
+
     <script src="~/Components/header/header.controller.js"></script>
     <script src="~/Components/header/header.directive.js"></script>
     <script src="~/Components/landing/landing.controller.js"></script>
@@ -48,7 +51,7 @@
             <div class="w_vz-header-container">
                 <vz-header message="data"></vz-header>
             </div>
-            @RenderBody();
+            @RenderBody()
         </div>
     </div>
 

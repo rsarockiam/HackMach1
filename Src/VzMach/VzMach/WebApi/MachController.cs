@@ -10,6 +10,7 @@ using VzMach.Helper;
 using VzMach.Models;
 using System.IO;
 using System.Data;
+using System.Web.SessionState;
 
 namespace VzMach.WebApi
 {
@@ -18,6 +19,7 @@ namespace VzMach.WebApi
         DataSet Data { get { return ExcelHelper.ExcelData; } }
         const string zipPopular = "ZIPPOPULAR"; const string countryPopular = "COUNTRYPOPULAR"; const string subbndlValue = "SubBundleValue";
         const string newlyaddedbundle = "NEWLYADDED";
+        public HttpSessionState Session { get; }
         #region LocationDetails
         [Route("~/WebApi/GetLocaionDetails")]
         [HttpGet]
@@ -52,6 +54,7 @@ namespace VzMach.WebApi
             recModel.CntryPopularBundle = new List<BundleModel>();
             recModel.ZipPopularBundle = new List<BundleModel>();
             recModel.SubPopularBundle = new List<BundleModel>();
+
             var x = Data.Tables[0].AsEnumerable().FirstOrDefault(tt => (tt.Field<string>("Zipcode") == ZipCode));
             var zipPop = x[zipPopular].ToString().Split(new string[] { (",") }, StringSplitOptions.RemoveEmptyEntries);
             var cntryPop = x[countryPopular].ToString().Split(new string[] { (",") }, StringSplitOptions.RemoveEmptyEntries);
@@ -60,7 +63,7 @@ namespace VzMach.WebApi
 
             foreach (var popbundId in zipPop)
             {
-               
+
                 var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == popbundId.Trim());
                 if (row != null)
                 {
@@ -80,8 +83,8 @@ namespace VzMach.WebApi
             }
             foreach (var popbundId in cntryPop)
             {
-               
-               
+
+
                 var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == popbundId.Trim());
                 if (row != null)
                 {
@@ -101,7 +104,7 @@ namespace VzMach.WebApi
             }
             foreach (var popbundId in subbndl)
             {
-                
+
                 var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == popbundId.Trim());
                 if (row != null)
                 {
@@ -121,7 +124,7 @@ namespace VzMach.WebApi
             }
             foreach (var popbundId in newlyadded)
             {
-                
+
                 var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == popbundId.Trim());
                 if (row != null)
                 {
@@ -153,13 +156,13 @@ namespace VzMach.WebApi
         [Route("~/WebApi/GetAllBundlesByType")]
         [HttpGet]
         #endregion
-        
-        public IHttpActionResult GetAllBundlesByType(string type="")
+
+        public IHttpActionResult GetAllBundlesByType(string type = "")
         {
 
             List<BundleModel> Bundles = new List<BundleModel>();
             foreach (DataRow row in Data.Tables[1].Rows)
-            {      
+            {
                 if (row != null)
                 {
                     if (!string.IsNullOrWhiteSpace(type) && row["Type"].ToString().Trim() != type)
@@ -180,6 +183,62 @@ namespace VzMach.WebApi
             }
 
             return Json(JsonConvert.SerializeObject(Bundles));
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type">CORE/COMP</param>
+        /// <returns></returns>
+
+        #region UpdateAddress
+        [Route("~/WebApi/UpdateAdderss")]
+        [HttpGet]
+        #endregion
+
+        public void UpdateAddress(Address address)
+        {
+            Session.Add("Address", address);
+        }
+
+
+        #region UpdateCart
+        [Route("~/WebApi/UpdateCart")]
+        [HttpGet]
+        #endregion
+
+        public void UpdateCart(string BundleId)
+        {
+            Session["BundleId"] = BundleId;
+        }
+
+        #region GetCart
+        [Route("~/WebApi/GetCart")]
+        [HttpGet]
+        #endregion
+
+        public IHttpActionResult GetCart()
+        {
+            BundleModel bun = new BundleModel();
+            if (Session["BundleId"] != null)
+            {
+                var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == Session["BundleId"].ToString().Trim());
+                if (row != null)
+                {
+                    bun.BundleId = row["BundleId"].ToString();
+                    bun.Type = row["Type"].ToString();
+                    bun.Name = row["Name"].ToString();
+                    bun.Price = row["Price"].ToString();
+                    bun.DAT = row["DAT"].ToString();
+                    bun.TV = row["TV"].ToString();
+                    bun.VOICE = row["VOICE"].ToString();
+                    bun.ROUTER = row["ROUTER"].ToString();
+                    bun.Discount = row["Discount"].ToString();
+                    bun.Keyword = row["Keyword"].ToString();
+                }
+            }
+            return Json(JsonConvert.SerializeObject(bun));
         }
 
     }

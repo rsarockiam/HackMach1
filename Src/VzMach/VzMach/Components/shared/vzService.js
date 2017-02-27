@@ -2,6 +2,7 @@
     .factory('vzService', ['$http', '$q', '$localStorage', function ($http, $q, localStorage) {
 
         var zipcode = "";
+        var type = "";
         return {
             getRecommendPlans: function (zipcode) {
                 var deferred = $q.defer();
@@ -82,7 +83,51 @@
                        deferred.reject(err)
                    });
                 return deferred.promise;
-        }
+            },
+            getAllPlans: function (type) {
+                var deferred = $q.defer();
+                $http.get('/WebApi/GetAllBundlesByType?type=' + type)
+                   .success(function (data) {
+                       deferred.resolve(data);
+                   })
+                   .error(function (err) {
+                       deferred.reject(err)
+                   });
+                return deferred.promise;
+            },
+            getCart: function (type) {
+                var deferred = $q.defer();
+                $http.get('/WebApi/GetCart')
+                   .success(function (data) {
+                       deferred.resolve(data);
+                   })
+                   .error(function (err) {
+                       deferred.reject(err)
+                   });
+                return deferred.promise;
+            },
+            UpdateCart: function (BundleId) {
+                var deferred = $q.defer();
+                $http.get('/WebApi/UpdateCart/BundleId' + BundleId)
+                    .success(function (data) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (err) {
+                        deferred.reject(err)
+                    });
+                return deferred.promise;
+            },
+            UpdateAddress: function (obj) {
+                var deferred = $q.defer();
+                $http.get('/WebApi/UpdateAddress/Address' + obj)
+                   .success(function (data) {
+                       deferred.resolve(data);
+                   })
+                   .error(function (err) {
+                       deferred.reject(err)
+                   });
+                return deferred.promise;
+            },
     //        var data = $.param({
     //        fName: $scope.firstName,
     //        lName: $scope.lastName

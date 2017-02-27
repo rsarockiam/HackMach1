@@ -1,0 +1,58 @@
+<div class="w_vz-loopqual w_vz-loopqual-top-anchor--js">
+    <div class="content-wrapper clearfix w_vz-loopqual--content">
+        <h2 class="w_vz-landing-header">Your home<br> is Fios-ready.</h2>
+    </div>
+    <div class="row fluid-grid">
+        <ul class="w_vz-lineup tiny-block-grid-1 medium-block-grid-2">
+            <li class="w_vz-lineup-item w_vz-lineup-item--top w_vz-lineup-item--top-fast" ng-click="continue()">
+                <h3>Build your<br />lineup</h3>
+                <span class="w_vz-lineup-item-button vzlhicon  vzlicon-right-arrow""></span>
+            </li>
+            <li class="w_vz-lineup-item w_vz-lineup-item--top w_vz-lineup-item--top-slow" ng-class="{'popular-scrolled': isScrolled}" ng-click="goToPopularPackages()">
+                <h3>Start with a <br />popular lineup</h3>
+                <span class="w_vz-lineup-item-button vzlhicon vzlicon-down-arrow"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="row clearfix fluid-grid">
+        <div class="column w_vz-lineup-sub-header w_vz-lineup-sub-header--js">
+            <h4>Pick your lineup</h4>
+        </div>
+    </div>
+    <div class="row clearfix fluid-grid">
+        <ul class="w_vz-lineup tiny-block-grid-1 medium-block-grid-1 large-block-grid-3" ng-init="loadPreConfigs()">
+            <li class="w_vz-lineup-item w_vz-lineup-item--tall" ng-class="{ selected : selectedItemIndex == $index, expanded : expandedPackages[$index] }" ng-repeat="config in preConfigs" ng-click="selectPreConfig($index)">
+                <div class="w_vz-lineup-item-inner">
+                    <h3 class="w_vz-lineup-name" ng-bind-html="config.BundleTitle"></h3>
+                    <p class="w_vz-lineup-price">{{formatPrice(config.TotalPrice)}}/mo</p>
+                </div>
+                <div class="w_vz-lineup-item-bottom-container">
+                    <p class="bold w_vz-lineup-item-price">{{formatPrice(config.TotalPrice)}}/mo</p>
+                    <ul ng-repeat="service in config.Services">
+                        <li><b>{{service.ServiceTitle}}</b></li>
+                        <li>{{service.Plans[0].ServiceName}} {{service.Plans[0].ServiceNameUnit}}</li>
+                        <!--<li ng-repeat="addon in service.Plans[0].relatedAddons">{{addon}}</li>-->
+                    </ul>
+                </div>
+                <div class="w_vz-plan__channellineup" ng-click="showChannelLineup($event, $index)" ng-if="containsTv(config.Services)">
+                    <span class="w_vz-plan__linupinner"> View channels <span class="text-chevron vzlhicon vzlicon-chevron-right"></span></span>
+                </div>
+                <div class="w_vz-lineup-item-toggle-button" ng-click="toggleExpandPackage($event, $index)">
+                    <span class="w_vz-lineup-item-button vzlhicon vzlicon-plus"></span>
+                    <span class="w_vz-lineup-item-button vzlhicon vzlicon-minus"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="w_vz-workflow-button-container row fluid-grid" ng-class="{'button-container--scrolled': isScrolled}">
+        <div class="w_vz-workflow--button w_vz-workflow--button-checkout">
+            <a ng-click="preConfigContinue(selectedPreConfigs, 'review')" ng-class="{disabled: loopQualContinueButtonDisabled }" class="button text-center">
+                <span>Review lineup</span>
+            </a>
+        </div>
+        <div class="w_vz-workflow--button">
+            <slide-button disabled="loopQualContinueButtonDisabled" clicked="nextButtonClicked" button-text="Customize" ng-click="preConfigContinue(selectedPreConfigs, 'byo')"></slide-button>
+        </div>
+    </div>
+    <div class="w_vz-workflow-button-spacer" ng-class="{ 'button-container--scrolled' : isScrolled }"></div>
+</div>

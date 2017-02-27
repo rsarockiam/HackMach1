@@ -70,13 +70,15 @@ angular
             url: "/customize",
             templateUrl: "components/recommended/recommended.html",
             controller: "recommendedController",
+            params: { index: 0 },
             controllerAs: 'vm'
         })
-           .state('plans', {
+        .state('plans', {
                url: "/plans",
                templateUrl: "components/recommended/recommended.html",
-               controller: "recommendedController"
-           })
+               controller: "recommendedController",
+               controllerAs: 'vm'
+        })
         .state('byo', {
             url: "/byo",
             templateUrl: 'components/build-plan/build-plan.html',

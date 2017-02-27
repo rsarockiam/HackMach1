@@ -9,10 +9,11 @@
  */
 
 angular.module('vzMach')
-  .controller('recommendedPlanController', ['$scope', '$state', '$rootScope', '$timeout', 'vzService',
-	function ($scope, $state, $rootScope, $timeout, vzService) {
+  .controller('recommendedPlanController', ['$scope', '$state', '$rootScope', '$timeout', 'vzService', '$stateParams',
+	function ($scope, $state, $rootScope, $timeout, vzService, $stateParams) {
+      
 	    var vm = this;
-	    vm.index = 0;
+	    vm.index = $stateParams.index;
 	    vm.listIndex = 0;
 	    vm.equipIndex = 0;
 	    var zipcode = vzService.getZipcode();

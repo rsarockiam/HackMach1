@@ -12,8 +12,8 @@ angular.module('vzMach')
   .controller('recommendedController', ['$scope', '$state', '$rootScope', '$timeout',
 	function ($scope, $state, $rootScope, $timeout) {
 	    var vm = this;
-	    vm.select = function () {
-	        $state.go("recommendedPlan");
+	    vm.select = function (indexValue) {
+	        $state.go("recommendedPlan", { index: indexValue });
 	    };
 	    vm.OnBuildBundleClick = function () {
 	        $state.go("byo");

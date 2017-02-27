@@ -151,12 +151,12 @@ angular.module('vzMach')
 	    }
 	    vm.checkoutButton = true;
 	    vm.checkoutButtonClick = function () {
-	     
+	        $state.go('review');
 	    };
 	    vm.onPlanSelect = funcation(bundleId)
 	    {
 	        //check select /deselect
-            //update bundle id to cart
+	        //update bundle id to cart
 	    };
 	    vm.init = function ()
 	    { };

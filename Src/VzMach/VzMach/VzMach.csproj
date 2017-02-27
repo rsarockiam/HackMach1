@@ -276,6 +276,7 @@
     <Content Include="Components\recommended\recommended.html" />
     <Content Include="Components\recommended\recommendedPlan.controller.js" />
     <Content Include="Components\review\review.controller.js" />
+    <Content Include="Components\review\review.html" />
     <Content Include="Components\shared\vzService.js" />
     <Content Include="Components\slider\slider.directive.js" />
     <Content Include="Components\Styles\rzSilder.css" />
@@ -287,6 +288,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\custom-checkbox.png" />
     <Content Include="Images\Verizon_FiOS_Logo_2015.png" />
     <Content Include="main.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />

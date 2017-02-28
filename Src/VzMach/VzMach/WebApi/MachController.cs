@@ -160,7 +160,7 @@ namespace VzMach.WebApi
         [HttpGet]
         #endregion
 
-        public IHttpActionResult GetAllBundlesByType(string type = "")
+        public IHttpActionResult GetAllBundlesByType(string type)
         {
 
             List<BundleModel> Bundles = new List<BundleModel>();
@@ -240,10 +240,9 @@ namespace VzMach.WebApi
         #endregion
 
         public IHttpActionResult GetCart()
-        {
-            string sessionId = "";
+        {            
             List<BundleModel> bundles = new List<BundleModel>();
-            string[] bundleIds = null;
+            string[] bundleIds = new string[2];
             if (Session["BundleId"] != null)
             {
                 bundleIds[0] = Session["BundleId"].ToString();

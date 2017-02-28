@@ -12,10 +12,10 @@
         </div>
         <div class="swiper-container strech" data-swiper="plan" dat-swiper-options='{"autoHeight":true,"loop":false}'>
             <div class="w_swiper">
-                <div style="text-align:center" class="swiper_item"  ng-repeat="plan in vm.slides[vm.index].plans">
+                <div style="text-align:center" class="swiper_item" ng-repeat="plan in vm.slides[vm.index].plans">
                     <div class="w_vz-lineup-item-inner margin-bottom-medium">
                         <h6 class="w_vz-lineup-name vzcolor">{{plan.planName}}</h6>
-                        
+
                     </div>
                     <div class="center">
                         <!--<p class="bold w_vz-lineup-item-price">{{plan.Price}}/mo</p>-->
@@ -58,6 +58,6 @@
             Back
         </a>
         <a ng-click="vm.reviewButtonClick()" class="button left text-center no-focus-effect no-icon p-50">
-            Review lineup
+        Review
         </a>
 </div>

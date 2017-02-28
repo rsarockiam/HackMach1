@@ -11,8 +11,8 @@ namespace VzMach
 {
     public static class WebApiConfig
     {
-        public static string UrlPrefix { get { return "webapi"; } }
-        public static string UrlPrefixRelative { get { return "~/webapi"; } }
+        public static string UrlPrefix { get { return "WebApi"; } }
+        public static string UrlPrefixRelative { get { return "~/WebApi"; } }
 
         public static void Register(HttpConfiguration config)
         {

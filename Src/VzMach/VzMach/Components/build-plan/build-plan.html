@@ -32,9 +32,10 @@
         </div>
 
         <div ng-show="vm.isDataOnly" class="swiper_item" ng-repeat="plan in vm.plans" ng-if="plan.Price>= slider_translate.minValue && plan.Price<= slider_translate.maxValue && plan.isDataOnly">
-            <div class="w_vz-lineup-item-inner">
-                <h3 class="w_vz-lineup-name" ng-bind-html="plan.BundleTitle"></h3>
-                <p class="w_vz-lineup-price">{{plan.TotalPrice}}/mo</p>
+            <div class="w_vz-lineup-item-inner ">
+                <h4 class="w_vz-lineup-name vzcolor margin-bottom-medium">{{plan.Name}}</h4>
+                <p ng-bind-html="plan.Description"></p>
+                <p class="w_vz-lineup-price vzcolor"><b>${{plan.Price}}/mo</b></p>
             </div>
             <!--<div class="w_vz-lineup-item-bottom-container">
                 <p class="bold w_vz-lineup-item-price">{{config.TotalPrice}}/mo</p>
@@ -49,17 +50,18 @@
 
 
         <div ng-show="vm.isTvOnly" ng-click="vm.onPlanSelect(plan.BundleId)" class="swiper_item" ng-if="plan.Price>= slider_translate.minValue && plan.Price<= slider_translate.maxValue && plan.isTvOnly">
-            <div class="w_vz-lineup-item-inner">
-                <h3 class="w_vz-lineup-name" ng-bind-html="plan.BundleTitle"></h3>
-                <p class="w_vz-lineup-price">{{plan.TotalPrice}}/mo</p>
+            <div class="w_vz-lineup-item-inner ">
+                <h4 class="w_vz-lineup-name vzcolor margin-bottom-medium">{{plan.Name}}</h4>
+                <p ng-bind-html="plan.Description"></p>
+                <p class="w_vz-lineup-price vzcolor"><b>${{plan.Price}}/mo</b></p>
             </div>
-            <div class="w_vz-lineup-item-bottom-container">
+            <!--<div class="w_vz-lineup-item-bottom-container">
                 <p class="bold w_vz-lineup-item-price">{{config.TotalPrice}}/mo</p>
                 <ul ng-repeat="service in plan.Services">
                     <li><b>{{service.ServiceTitle}}</b></li>
                     <li>{{service.Plans[0].ServiceName}} {{service.Plans[0].ServiceNameUnit}}</li>
                 </ul>
-            </div>
+            </div>-->
             <div class="w_vz-plan__channellineup">
                 <span class="w_vz-plan__linupinner"> View channels <span class="text-chevron vzlhicon vzlicon-chevron-right"></span></span>
             </div>

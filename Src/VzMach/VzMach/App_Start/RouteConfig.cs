@@ -20,20 +20,6 @@ namespace VzMach
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-            //route.RouteHandler = new MyHttpControllerRouteHandler();
-        }
-    }
-    public class MyHttpControllerHandler : HttpControllerHandler, IRequiresSessionState
-    {
-        public MyHttpControllerHandler(RouteData routeData) : base(routeData)
-        {
-        }
-    }
-    public class MyHttpControllerRouteHandler : HttpControllerRouteHandler
-    {
-        protected override IHttpHandler GetHttpHandler(RequestContext requestContext)
-        {
-            return new MyHttpControllerHandler(requestContext.RouteData);
         }
     }
 }

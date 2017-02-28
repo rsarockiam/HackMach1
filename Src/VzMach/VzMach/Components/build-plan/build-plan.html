@@ -6,16 +6,16 @@
     </div>
 </div>
 <div class="row">
-    <input type="checkbox" class="lh-checkbox" ng-model="vm.isTvOnly" />
-    <label class="normal-weight" role="checkbox">TV Only</label>
-    <input type="checkbox" class="lh-checkbox" ng-model="vm.isDataOnly" />
-    <label class="normal-weight" role="checkbox">Data Only</label>
-    <input type="checkbox" class="lh-checkbox" ng-model="vm.isBoth" />
-    <label class="normal-weight" role="checkbox">Both</label>
+    <input type="radio" id="rdnTv" class="lh-checkbox" ng-model="vm.isTvOnly" />
+    <label class="normal-weight" for="rdnTv" role="checkbox">TV Only</label>
+    <input type="radio" id="rdnData" class="lh-checkbox" ng-model="vm.isDataOnly" />
+    <label class="normal-weight" for="rdnData" role="checkbox">Data Only</label>
+    <input type="radio" id="rdnBoth" class="lh-checkbox" ng-model="vm.isBoth" />
+    <label class="normal-weight" for="rdnBoth" role="checkbox">Both</label>
 </div>
 <div class="row clearfix fluid-grid">
 
-    <div class="swiper-container strech" data-swiper="plan" dat-swiper-options='{"autoHeight":true,"loop":false}'>
+    <div class="swiper-container strech" style="max-height:calc(75vh - 40px); overflow-y:auto;">
         <div class="swiper_item margin-bottom-medium" ng-show="vm.isBoth" ng-repeat="plan in vm.plans" ng-if="plan.Price>= slider_translate.minValue && plan.Price<= slider_translate.maxValue">
             <div class="w_vz-lineup-item-inner ">
                 <h4 class="w_vz-lineup-name vzcolor margin-bottom-medium">{{plan.Name}}</h4>

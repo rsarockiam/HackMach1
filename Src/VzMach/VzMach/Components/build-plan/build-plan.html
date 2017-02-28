@@ -31,7 +31,7 @@
             </div>-->
         </div>
 
-        <div ng-show="vm.isDataOnly" class="swiper_item" ng-repeat="plan in vm.plans" ng-if="plan.Price>= slider_translate.minValue && plan.Price<= slider_translate.maxValue && plan.isDataOnly">
+        <div ng-show="vm.isDataOnly" class="swiper_item" ng-click="vm.select()" ng-repeat="plan in vm.plans" ng-if="plan.Price>= slider_translate.minValue && plan.Price<= slider_translate.maxValue && plan.isDataOnly">
             <div class="w_vz-lineup-item-inner ">
                 <h4 class="w_vz-lineup-name vzcolor margin-bottom-medium">{{plan.Name}}</h4>
                 <p ng-bind-html="plan.Description"></p>

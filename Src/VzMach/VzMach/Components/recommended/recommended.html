@@ -1,23 +1,28 @@
 ﻿<div class="row clearfix fluid-grid">
-    <ul class="w_vz-lineup tiny-block-grid-1 large-block-grid-3">
-        <li class="w_vz-lineup-item w_vz-lineup-item--tall" ng-click="vm.select()" style="height:calc(25vh - 15px);">
-            <div>Recommended for you</div>
-            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow"></span>
-        </li>
-        <li><hr style="margin:0;" /></li>
-        <li class="w_vz-lineup-item w_vz-lineup-item--tall" ng-click="vm.select()" style="height:calc(25vh - 15px);">
-            <div>Popular plan in your city</div>
-            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow"></span>
-        </li>
-        <li><hr style="margin:0;" /></li>
-        <li class="w_vz-lineup-item w_vz-lineup-item--tall" ng-click="vm.select()" style="height:calc(25vh - 15px);">
+    <ul class="tiny-flex-grid-1 plan-selection" style="height: calc(100vh - 100px);">
+        <li class="" ng-click="vm.select(0)">
             <div>New plans</div>
             <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow"></span>
         </li>
-        <li><hr style="margin:0;" /></li>
-        <li class="w_vz-lineup-item w_vz-lineup-item--tall" ng-click="vm.OnBuildBundleClick()" style="height:calc(25vh - 10px);">
+        <li><hr class="stretch" /></li>
+        <li class="" ng-click="vm.select(1)">
+            <div>Popular plan in your state</div>
+            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow"></span>
+        </li>
+        <li><hr class="stretch" /></li>
+        <li class="" ng-click="vm.select(2)">
+            <div>Popular in US</div>
+            <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow"></span>
+        </li>
+        <li><hr class="stretch" /></li>
+        <li class="" ng-click="vm.OnBuildBundleClick()">
             <div>Build ur own</div>
             <span class="w_vz-lineup-item-button vzlhicon vzlicon-right-arrow"></span>
         </li>
     </ul>
 </div>
+<style>
+    .plan-selection li {
+        cursor: pointer;
+    }
+</style>

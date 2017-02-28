@@ -1,27 +1,36 @@
 ﻿<div class="row clearfix fluid-grid">
     <div id="plans">
-        <div class="row">
+        <div class="row margin-bottom-medium">
             <div class="columns padding-vert-zero">
                 <div style="text-align:center">
-                    <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrev()"> < </h4>
+                    <!-- <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrev()"> < </h4>-->
                     <h4 style="display:inline-block;margin-left:50px;margin-right:50px" class="">{{vm.slides[vm.index].text}}</h4>
-                    <h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNext()"> > </h4>
+                    <!--<h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNext()"> > </h4>-->
                 </div>
 
             </div>
         </div>
-        <div class="row" style="margin-top:50px">
-            <div class="columns padding-vert-zero">
-                <div style="text-align:center">
-                    <h1>{{vm.slides[vm.index].plans[vm.listIndex].planName}}</h1>
-                    <h4>{{vm.slides[vm.index].plans[vm.listIndex].Description}}</h4>
-                    <h4>${{vm.slides[vm.index].plans[vm.listIndex].Price}}</h4>
-                    <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrevPlan()"> < </h4>
-                    <h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNextPlan()"> > </h4>
+        <div class="swiper-container strech" data-swiper="plan" dat-swiper-options='{"autoHeight":true,"loop":false}'>
+            <div class="w_swiper">
+                <div style="text-align:center" class="swiper_item"  ng-repeat="plan in vm.slides[vm.index].plans">
+                    <div class="w_vz-lineup-item-inner margin-bottom-medium">
+                        <h6 class="w_vz-lineup-name vzcolor">{{plan.planName}}</h6>
+                        
+                    </div>
+                    <div class="center">
+                        <!--<p class="bold w_vz-lineup-item-price">{{plan.Price}}/mo</p>-->
+                        <p class="margin-bottom-medium" ng-bind-html="plan.Description"></p>
+                        <p class="w_vz-lineup-price vzcolor"><b> ${{plan.Price}}/mo</b></p>
+                    </div>
                 </div>
             </div>
-            <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseBundle()">Choose this Bundle</button>
+            <div class="swiper_button-prev" data-swiper-prev>
+            </div>
+            <div class="swiper_button-next" data-swiper-next>
+            </div>
+            <div class="swiper_pager"></div>
         </div>
+
     </div>
     <div class="row" style="margin-top:50px;display:none" id="equipment">
         <p>Following are our recommended Equipment bundles. Grab any?</p>
@@ -37,8 +46,19 @@
     <div class="row" id="chosenBundle" style="display:none">
         <h3>You Have Chosen</h3>
         <h4>{{vm.chosenBundleMessage}}</h4>
-        <button class="button mw-medium margin-bottom-medium" >Confirm</button>
+        <button class="button mw-medium margin-bottom-medium">Confirm</button>
         <button class="button mw-medium margin-bottom-medium" ng-click="vm.cancel()">Cancel</button>
     </div>
-    </div>
-    
+</div>
+
+
+<div class="row fluid-grid" style="position:fixed;bottom:0;width:100%;">
+    <a ng-click="vm.back()" class="button left secondary text-center no-focus-effect no-icon p-50">
+        Back
+    </a>
+    <a ng-click="vm.reviewButtonClick()" class="button left text-center no-focus-effect no-icon p-50">
+        Review lineup
+    </a>
+
+
+</div>

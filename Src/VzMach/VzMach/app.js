@@ -30,7 +30,8 @@ angular
     //'Shared',
     'ui.bootstrap',
     'ngStorage',
-    'rzModule'
+    'rzModule',
+    'ngSanitize'
 
   ])
   .provider('globalInitializers', function globalInitializersProvider() {
@@ -70,13 +71,15 @@ angular
             url: "/customize",
             templateUrl: "components/recommended/recommended.html",
             controller: "recommendedController",
+            params: { index: 0 },
             controllerAs: 'vm'
         })
-           .state('plans', {
+        .state('plans', {
                url: "/plans",
                templateUrl: "components/recommended/recommended.html",
-               controller: "recommendedController"
-           })
+               controller: "recommendedController",
+               controllerAs: 'vm'
+        })
         .state('byo', {
             url: "/byo",
             templateUrl: 'components/build-plan/build-plan.html',
@@ -90,6 +93,7 @@ angular
           url: "/selected",
           templateUrl: 'components/recommended/recommendedPlan.html',
           controller: 'recommendedPlanController',
+          params: { index: 0 },
           controllerAs: 'vm'
       });
 

@@ -18,78 +18,6 @@ angular.module('vzMach')
 	    vm.isDataOnly = false;
 	    vm.isBoth = true;
 
-	    //Minimal slider config
-	    $scope.minSlider = {
-	        value: 10
-	    };
-
-	    //Slider with selection bar
-	    $scope.slider_visible_bar = {
-	        value: 10,
-	        options: {
-	            showSelectionBar: true
-	        }
-	    };
-
-	    //Range slider config
-	    $scope.minRangeSlider = {
-	        minValue: 10,
-	        maxValue: 90,
-	        options: {
-	            floor: 0,
-	            ceil: 100,
-	            step: 1
-	        }
-	    };
-
-	    //Slider with selection bar
-	    $scope.color_slider_bar = {
-	        value: 12,
-	        options: {
-	            showSelectionBar: true,
-	            getSelectionBarColor: function (value) {
-	                if (value <= 3)
-	                    return 'red';
-	                if (value <= 6)
-	                    return 'orange';
-	                if (value <= 9)
-	                    return 'yellow';
-	                return '#2AE02A';
-	            }
-	        }
-	    };
-
-	    //Slider config with floor, ceil and step
-	    $scope.slider_floor_ceil = {
-	        value: 12,
-	        options: {
-	            floor: 10,
-	            ceil: 100,
-	            step: 5
-	        }
-	    };
-
-	    //Slider config with callbacks
-	    $scope.slider_callbacks = {
-	        value: 100,
-	        options: {
-	            onStart: function () {
-	                $scope.otherData.start = $scope.slider_callbacks.value * 10;
-	            },
-	            onChange: function () {
-	                $scope.otherData.change = $scope.slider_callbacks.value * 10;
-	            },
-	            onEnd: function () {
-	                $scope.otherData.end = $scope.slider_callbacks.value * 10;
-	            }
-	        }
-	    };
-	    $scope.otherData = {
-	        start: 0,
-	        change: 0,
-	        end: 0
-	    };
-
 	    //Slider config with custom display function
 	    $scope.slider_translate = {
 	        minValue: 100,
@@ -105,50 +33,7 @@ angular.module('vzMach')
 	        }
 	    };
 
-	    //Slider config with steps array of letters
-	    $scope.slider_alphabet = {
-	        value: 0,
-	        options: {
-	            stepsArray: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-	        }
-	    };
 
-	    //Slider with ticks
-	    $scope.slider_ticks = {
-	        value: 5,
-	        options: {
-	            ceil: 10,
-	            floor: 0,
-	            showTicks: true
-	        }
-	    };
-
-
-
-	    //Slider with draggable range
-	    $scope.slider_all_options = {
-	        minValue: 2,
-	        options: {
-	            floor: 0,
-	            ceil: 10,
-	            step: 1,
-	            precision: 0,
-	            draggableRange: false,
-	            showSelectionBar: false,
-	            hideLimitLabels: false,
-	            readOnly: false,
-	            disabled: false,
-	            showTicks: false,
-	            showTicksValues: false
-	        }
-	    };
-	    $scope.toggleHighValue = function () {
-	        if ($scope.slider_all_options.maxValue != null) {
-	            $scope.slider_all_options.maxValue = undefined;
-	        } else {
-	            $scope.slider_all_options.maxValue = 8;
-	        }
-	    }
 	    vm.checkoutButton = true;
 	    vm.checkoutButtonClick = function () {
 	        $state.go('review');
@@ -198,15 +83,13 @@ angular.module('vzMach')
 	            planObj.Name = bundles[i].Name;
 	            planObj.Description = "";
 	            if (bundles[i].DAT != "")
-	                planObj.Description += bundles[i].DAT + " Internet  ";
+	                planObj.Description += "<p>" + bundles[i].DAT + " Internet  </p>";
 	            if (bundles[i].TV != "")
-	                planObj.Description += "+ " + bundles[i].TV + " TV";
+	                planObj.Description += " <p>" + bundles[i].TV + " TV</p>";
 	            if (bundles[i].VOICE != "")
-	                planObj.Description += "+ " + bundles[i].VOICE + " Voice";
-	            if (bundles[i].Router != "" && (bundles[i].TV != "" || bundles[i].DAT != ""))
-	                planObj.Description += "+ Fios Quantum Router";
-	            else if (bundles[i].Router != "" && bundles[i].TV == "" && bundles[i].DAT == "")
-	                planObj.Description += " Fios Quantum Router";
+	                planObj.Description += " <p>" + bundles[i].VOICE + " Voice<p>";
+	            if (bundles[i].Router != "")
+	                planObj.Description += "<p> Fios Quantum Router</p>";
 	            if (planObj.Name.toLowerCase().indexOf('tv') > 0)
 	                planObj.isTvOnly = true;
 	            else if (planObj.Name.toLowerCase().indexOf('data') > 0)

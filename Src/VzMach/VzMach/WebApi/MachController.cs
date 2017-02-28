@@ -55,7 +55,7 @@ namespace VzMach.WebApi
             recModel.CntryPopularBundle = new List<BundleModel>();
             recModel.ZipPopularBundle = new List<BundleModel>();
             recModel.SubPopularBundle = new List<BundleModel>();
-
+            ZipCode = "07621";
             var x = Data.Tables[0].AsEnumerable().FirstOrDefault(tt => (tt.Field<string>("Zipcode") == ZipCode));
             var zipPop = x[zipPopular].ToString().Split(new string[] { (",") }, StringSplitOptions.RemoveEmptyEntries);
             var cntryPop = x[countryPopular].ToString().Split(new string[] { (",") }, StringSplitOptions.RemoveEmptyEntries);

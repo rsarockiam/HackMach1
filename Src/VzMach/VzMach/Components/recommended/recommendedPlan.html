@@ -1,35 +1,44 @@
 ﻿<div class="row clearfix fluid-grid">
     <div id="plans">
-        <div class="row margin-bottom-medium">
-            <div class="columns padding-vert-zero">
-                <div style="text-align:center">
-                    <!-- <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrev()"> < </h4>-->
-                    <h4 style="display:inline-block;margin-left:50px;margin-right:50px" class="">{{vm.slides[vm.index].text}}</h4>
-                    <!--<h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNext()"> > </h4>-->
-                </div>
-
-            </div>
-        </div>
-        <div class="swiper-container strech" data-swiper="plan" dat-swiper-options='{"autoHeight":true,"loop":false}'>
-            <div class="w_swiper">
-                <div style="text-align:center" class="swiper_item" ng-repeat="plan in vm.slides[vm.index].plans">
-                    <div class="w_vz-lineup-item-inner margin-bottom-medium">
-                        <h6 class="w_vz-lineup-name vzcolor">{{plan.planName}}</h6>
+        <ul class="tiny-flex-grid-1" style="justify-content:space-between;min-height:calc(100vh - 200px);">
+            <li>
+                <div class="row margin-bottom-medium">
+                    <div class="columns padding-vert-zero">
+                        <div style="text-align:center">
+                            <!-- <h4 style="display:inline-block;margin-right:10px" ng-click="vm.goPrev()"> < </h4>-->
+                            <h4 style="display:inline-block;margin-left:50px;margin-right:50px" class="">{{vm.slides[vm.index].text}}</h4>
+                            <!--<h4 style="display:inline-block;margin-left:10px" ng-click="vm.goNext()"> > </h4>-->
+                        </div>
 
                     </div>
-                    <div class="center">
-                        <!--<p class="bold w_vz-lineup-item-price">{{plan.Price}}/mo</p>-->
-                        <p class="margin-bottom-medium" ng-bind-html="plan.Description"></p>
-                        <p class="w_vz-lineup-price vzcolor"><b> ${{plan.Price}}/mo</b></p>
-                    </div>
                 </div>
-            </div>
-            <div class="swiper_button-prev" data-swiper-prev>
-            </div>
-            <div class="swiper_button-next" data-swiper-next>
-            </div>
-            <div class="swiper_pager"></div>
-        </div>
+            </li>
+            <li>
+                <div class="swiper-container strech" data-swiper="plan" dat-swiper-options='{"autoHeight":true,"loop":false}'>
+                    <div class="w_swiper">
+                        <div style="text-align:center" class="swiper_item" ng-repeat="plan in vm.slides[vm.index].plans">
+                            <div class="w_vz-lineup-item-inner margin-bottom-medium">
+                                <h6 class="w_vz-lineup-name vzcolor">{{plan.planName}}</h6>
+
+                            </div>
+                            <div class="center">
+                                <p class="margin-bottom-medium" style="padding:5px;" ng-bind-html="plan.Description"></p>
+                                <p class="w_vz-lineup-price vzcolor text-xlarge " style="padding:5px;"><b> ${{plan.Price}}/mo</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper_button-prev" data-swiper-prev>
+                    </div>
+                    <div class="swiper_button-next" data-swiper-next>
+                    </div>
+                    <div class="swiper_pager"></div>
+                </div>
+
+            </li>
+
+        </ul>
+
+       
 
     </div>
     <div class="row" style="margin-top:50px;display:none" id="equipment">

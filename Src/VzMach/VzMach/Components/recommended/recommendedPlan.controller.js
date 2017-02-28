@@ -17,7 +17,7 @@ angular.module('vzMach')
 	    vm.listIndex = 0;
 	    vm.equipIndex = 0;
 	    var zipcode = vzService.getZipcode();
-	    var state = vzService.getState();
+	    var city = vzService.getCity();
 	    var result = {};
 	    vzService.getRecommendPlans(zipcode).then(function (data) {
 	        result = JSON.parse(data);
@@ -43,7 +43,7 @@ angular.module('vzMach')
 	        vm.equipments = [];
 	        vm.savedEquipments = [];
 	        constructVwObject(result.NewlyReleasedBundle, "Newly Released");
-	        constructVwObject(result.ZipPopularBundle, "Popular in " + state);
+	        constructVwObject(result.ZipPopularBundle, "Popular in " + city);
 	        constructVwObject(result.CntryPopularBundle, "Popular in US");
 	        constructEquipmentObject(result.SubPopularBundle)
 	        function constructVwObject(bundles, categoryName) {
@@ -55,11 +55,11 @@ angular.module('vzMach')
 	                planObj.planName = bundles[i].Name;
 	                planObj.Description = "";
 	                if (bundles[i].DAT != "")
-	                    planObj.Description +="<p>"+ bundles[i].DAT + " Internet  </p>";
+	                    planObj.Description +="<p class='text-xxlarge'>"+ bundles[i].DAT + " Internet  </p>";
 	                if (bundles[i].TV != "")
-	                    planObj.Description += " <p>" + bundles[i].TV + " TV</p>";
+	                    planObj.Description += " <p class='text-xxlarge'>" + bundles[i].TV + " TV</p>";
 	                if (bundles[i].VOICE != "")
-	                    planObj.Description += " <p>" + bundles[i].VOICE + " Voice<p>";
+	                    planObj.Description += " <p class='text-xxlarge'>" + bundles[i].VOICE + " Voice<p>";
 	                planObj.Price = bundles[i].Price;
 	                obj.plans.push(planObj);
 	            }
@@ -70,9 +70,9 @@ angular.module('vzMach')
 	                obj = {};
 	                obj.Name = "";
 	                if (bundles[i].TV != "")
-	                    obj.Name += bundles[i].TV;
+	                    obj.Name += " <p class='text-xxlarge'>" + bundles[i].TV + "</p>";
 	                if (bundles[i].ROUTER != "")
-	                    obj.Name += " <p> Fios Quantum Router</p>";
+	                    obj.Name += " <p class='text-xxlarge'> Fios Quantum Router</p>";
 	                obj.Price = bundles[i].Price;
 	                vm.equipments.push(obj);
 	            }
@@ -101,18 +101,18 @@ angular.module('vzMach')
 	    }
 
 
-	    vm.chooseBundle = function () {
-	        if ((vm.slides[vm.index].plans[vm.listIndex].Description).toLowerCase().indexOf("tv") < 0) {
+	    vm.chooseBundle = function (plan) {
+	        if ((plan.Description).toLowerCase().indexOf("tv") < 0) {
 	            vm.equipments = _.filter(vm.equipments, function (o) {
 	                return o.Name.toLowerCase().indexOf("tv") < 0;
 	            });
-	            console.log(vm.equipments)
 	        }
+	        vm.selectedPlan = plan;
 	        $("#plans").slideUp();
 	        $("#equipment").slideDown();
 	    }
 	    vm.chooseEquipment = function () {
-	        vm.chosenBundleMessage = vm.slides[vm.index].plans[vm.listIndex].planName + " + " + vm.equipments[vm.equipIndex].Name;
+	        vm.chosenBundleMessage = vm.selectedPlan.planName + vm.equipments[vm.equipIndex].Name;
 	        $("#equipment").slideUp();
 	        $("#chosenBundle").slideDown();
 

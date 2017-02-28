@@ -12,6 +12,8 @@ using System.IO;
 using System.Data;
 using System.Web.SessionState;
 using System.Web;
+using System.Net.Http.Headers;
+using System.Collections.Specialized;
 
 namespace VzMach.WebApi
 {
@@ -20,7 +22,8 @@ namespace VzMach.WebApi
         DataSet Data { get { return ExcelHelper.ExcelData; } }
         const string zipPopular = "ZIPPOPULAR"; const string countryPopular = "COUNTRYPOPULAR"; const string subbndlValue = "SubBundleValue";
         const string newlyaddedbundle = "NEWLYADDED";
-        public HttpSessionState Session { get; }
+
+        public HttpSessionState Session { get { return HttpContext.Current.Session; } }
         #region LocationDetails
         [Route("~/WebApi/GetLocaionDetails")]
         [HttpGet]
@@ -55,7 +58,6 @@ namespace VzMach.WebApi
             recModel.CntryPopularBundle = new List<BundleModel>();
             recModel.ZipPopularBundle = new List<BundleModel>();
             recModel.SubPopularBundle = new List<BundleModel>();
-            ZipCode = "07621";
             var x = Data.Tables[0].AsEnumerable().FirstOrDefault(tt => (tt.Field<string>("Zipcode") == ZipCode));
             var zipPop = x[zipPopular].ToString().Split(new string[] { (",") }, StringSplitOptions.RemoveEmptyEntries);
             var cntryPop = x[countryPopular].ToString().Split(new string[] { (",") }, StringSplitOptions.RemoveEmptyEntries);
@@ -198,9 +200,17 @@ namespace VzMach.WebApi
         [HttpPost]
         #endregion
 
-        public void UpdateAddress(Address address)
+        public bool UpdateAddress(Address address)
         {
-            Session.Add("Address", address);
+            try
+            {
+                Session["Address"] = address;
+                return true;
+            }
+            catch
+            { return false; }
+
+
         }
 
 
@@ -209,11 +219,19 @@ namespace VzMach.WebApi
         [HttpGet]
         #endregion
 
-        public bool UpdateCart(string BundleId)
+        public bool UpdateCart(string BundleId, string type)
         {
-            var session = HttpContext.Current.Session;
-            session["BundleId"] = BundleId;
-            return true;
+            try
+            {
+                if (type == "CORE")
+                    Session["BundleId"] = BundleId;
+                else if (type == "COMP")
+                    Session["CompId"] = BundleId;
+                return true;
+            }
+            catch
+            { return false; }
+
         }
 
         #region GetCart
@@ -223,25 +241,35 @@ namespace VzMach.WebApi
 
         public IHttpActionResult GetCart()
         {
-            BundleModel bun = new BundleModel();
+            string sessionId = "";
+            List<BundleModel> bundles = new List<BundleModel>();
+            string[] bundleIds = null;
             if (Session["BundleId"] != null)
             {
-                var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == Session["BundleId"].ToString().Trim());
-                if (row != null)
+                bundleIds[0] = Session["BundleId"].ToString();
+                if (Session["CompId"] != null)
+                    bundleIds[1] = Session["CompId"].ToString();
+                foreach (var item in bundleIds)
                 {
-                    bun.BundleId = row["BundleId"].ToString();
-                    bun.Type = row["Type"].ToString();
-                    bun.Name = row["Name"].ToString();
-                    bun.Price = row["Price"].ToString();
-                    bun.DAT = row["DAT"].ToString();
-                    bun.TV = row["TV"].ToString();
-                    bun.VOICE = row["VOICE"].ToString();
-                    bun.ROUTER = row["ROUTER"].ToString();
-                    bun.Discount = row["Discount"].ToString();
-                    bun.Keyword = row["Keyword"].ToString();
+                    var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == item.Trim());
+                    if (row != null)
+                    {
+                        BundleModel bun = new BundleModel();
+                        bun.BundleId = row["BundleId"].ToString();
+                        bun.Type = row["Type"].ToString();
+                        bun.Name = row["Name"].ToString();
+                        bun.Price = row["Price"].ToString();
+                        bun.DAT = row["DAT"].ToString();
+                        bun.TV = row["TV"].ToString();
+                        bun.VOICE = row["VOICE"].ToString();
+                        bun.ROUTER = row["ROUTER"].ToString();
+                        bun.Discount = row["Discount"].ToString();
+                        bun.Keyword = row["Keyword"].ToString();
+                        bundles.Add(bun);
+                    }
                 }
             }
-            return Json(JsonConvert.SerializeObject(bun));
+            return Json(JsonConvert.SerializeObject(bundles));
         }
 
     }

@@ -41,10 +41,10 @@
        
 
     </div>
-    <div class="row" style="margin-top:50px;display:none" id="equipment">
-        <p>Following are our recommended Equipment bundles. Grab any?</p>
-        <h4>{{vm.equipments[vm.equipIndex].Name}}</h4>
-        <h4>${{vm.equipments[vm.equipIndex].Price}}</h4>
+    <div class="row container" style="margin-top:50px;display:none; text-align:center" id="equipment">
+        <h6 class="margin-bottom-medium">Following is our most  recommended Equipment bundle. Wanna grab?</h6>
+        <p class="text-xxlarge" ng-bind-html="vm.equipments[vm.equipIndex].Name"></p>
+        <p class="vzcolor text-xxlarge"><b>${{vm.equipments[vm.equipIndex].Price}}</b></p>
         <div class="row">
             <button class="button mw-medium margin-bottom-medium" ng-click="vm.chooseEquipment()">Yes</button>
             <button class="button mw-medium margin-bottom-medium" ng-click="vm.rejectEquipment()">No</button>
@@ -52,9 +52,9 @@
         </div>
 
     </div>
-    <div class="row" id="chosenBundle" style="display:none">
-        <h3>You Have Chosen</h3>
-        <h4>{{vm.chosenBundleMessage}}</h4>
+    <div class="row" id="chosenBundle" style="margin-top:50px;display:none;text-align:center">
+        <h6 class="margin-bottom-medium">You Have Chosen,</h6>
+        <p class="text-xxlarge"><b ng-bind-html="vm.chosenBundleMessage"></b></p>
         <button class="button mw-medium margin-bottom-medium">Confirm</button>
         <button class="button mw-medium margin-bottom-medium" ng-click="vm.cancel()">Cancel</button>
     </div>

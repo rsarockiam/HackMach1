@@ -242,12 +242,12 @@ namespace VzMach.WebApi
         public IHttpActionResult GetCart()
         {            
             List<BundleModel> bundles = new List<BundleModel>();
-            string[] bundleIds = new string[2];
+            List<string> bundleIds = new List<string>();
             if (Session["BundleId"] != null)
             {
-                bundleIds[0] = Session["BundleId"].ToString();
-                if (Session["CompId"] != null)
-                    bundleIds[1] = Session["CompId"].ToString();
+                bundleIds.Add(Session["BundleId"].ToString());
+                if(Session["CompId"] != null)
+                    bundleIds.Add(Session["CompId"].ToString());
                 foreach (var item in bundleIds)
                 {
                     var row = Data.Tables[1].AsEnumerable().FirstOrDefault(d => d.Field<string>("BundleId") == item.Trim());

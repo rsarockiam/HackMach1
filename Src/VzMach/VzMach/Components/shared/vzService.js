@@ -58,14 +58,14 @@
             setZipcode: function (zip) {
                 localStorage.zipcode = zip;
             },
-            setState: function (State) {
-                localStorage.state= State;
+            setCity: function (city) {
+                localStorage.city = city;
             },
             getZipcode: function () {
                 return localStorage.zipcode;
             },
-            getState: function () {
-                return localStorage.state;
+            getCity: function () {
+                return localStorage.city;
             },
             getZipDetails: function (zipcode) {
                 var deferred = $q.defer();

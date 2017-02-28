@@ -16,6 +16,8 @@ angular.module('vzMach')
 	        $state.go("recommended");
 	    };
 	    vm.continue = function () {
+	        vzService.setZipcode(vm.zipcode)
+	        vzService.setCity(vm.city)
 	        $state.go("recommended");
 	    };
 	    vm.init = function () {
@@ -37,11 +39,6 @@ angular.module('vzMach')
 	                vm.state = data.state;
 	            })
 	        }
-	    }
-	    vm.continueWithoutStreetAddress = function () {
-	        vzService.setZipcode(vm.zipcode)
-	        vzService.setState(vm.state)
-	        $state.go("recommendedPlan");
 	    }
 	    vm.init();
 	    return vm;

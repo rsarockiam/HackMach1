@@ -17,7 +17,7 @@ angular.module('vzMach')
 	    vm.listIndex = 0;
 	    vm.equipIndex = 0;
 	    var zipcode = vzService.getZipcode();
-	    var state = vzService.getState();
+	    var city = vzService.getCity();
 	    var result = {};
 	    vzService.getRecommendPlans(zipcode).then(function (data) {
 	        result = JSON.parse(data);
@@ -43,7 +43,7 @@ angular.module('vzMach')
 	        vm.equipments = [];
 	        vm.savedEquipments = [];
 	        constructVwObject(result.NewlyReleasedBundle, "Newly Released");
-	        constructVwObject(result.ZipPopularBundle, "Popular in " + state);
+	        constructVwObject(result.ZipPopularBundle, "Popular in " + city);
 	        constructVwObject(result.CntryPopularBundle, "Popular in US");
 	        constructEquipmentObject(result.SubPopularBundle)
 	        function constructVwObject(bundles, categoryName) {
